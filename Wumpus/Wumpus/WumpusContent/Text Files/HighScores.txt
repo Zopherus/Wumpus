@@ -1,0 +1,5 @@
+Paul,600
+Marty,500
+Chase,400
+Nick,300
+Eric,200
