@@ -19,17 +19,6 @@ namespace Wumpus
         public static Helicopter helicopter = new Helicopter(new Rectangle(320, 120, 140, 165));
 		private static Random rnd = new Random(30);
 		private int currentRoom;
-		public static bool menu;
-		public static bool cave;
-		public static bool trivia;
-        public static bool triviaWin;
-        public static bool triviaLose;
-		public static bool highscore;
-		public static bool map;
-		public static bool shop;
-        public static bool bat;
-        public static bool help;
-        public static bool lose;
 		//private int startRoom = rnd.Next(0, 30);
 
 
@@ -99,20 +88,6 @@ namespace Wumpus
 
 			// Arrow , Gold
 			return ab;
-		}
-		public static void resetGameState()
-		{
-			map = false;
-			cave = false;
-			trivia = false;
-            triviaWin = false;
-            triviaLose = false;
-			highscore = false;
-			menu = false;
-			shop = false;
-            bat = false;
-            help = false;
-            lose = false;
 		}
 	}
 }

@@ -8,9 +8,10 @@ namespace Wumpus
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        public static WumpusGame game;
         static void Main(string[] args)
         {
-            using (Game1 game = new Game1())
+            using (game = new WumpusGame())
             {
                 game.Run();
             }

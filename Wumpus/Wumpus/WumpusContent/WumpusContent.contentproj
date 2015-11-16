@@ -30,23 +30,23 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\MapHexagon.fw.png">
-      <Name>MapHexagon.fw</Name>
+    <Compile Include="Sprites\MapHexagon.png">
+      <Name>MapHexagon</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Spritefonts\SpriteFont1.spritefont">
-      <Name>SpriteFont1</Name>
+    <Compile Include="Spritefonts\SmallMotorwerkFont.spritefont">
+      <Name>SmallMotorwerkFont</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <SubType>Designer</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\black.fw.png">
-      <Name>black.fw</Name>
+    <Compile Include="Sprites\Black.png">
+      <Name>Black</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -87,8 +87,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\ground.png">
-      <Name>ground</Name>
+    <Compile Include="Sprites\Ground.png">
+      <Name>Ground</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -97,8 +97,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sprites\death.png">
-      <Name>death</Name>
+    <Compile Include="Sprites\Death.png">
+      <Name>Death</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -107,38 +107,38 @@
       <Name>HighScores</Name>
       <Importer>EffectImporter</Importer>
     </Content>
-    <Compile Include="Sprites\untitled.png">
-      <Name>untitled</Name>
+    <Compile Include="Sprites\HexagonTreeBoundaries\DefaultBoundary.png">
+      <Name>DefaultBoundary</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sprites\untitled1.png">
-      <Name>untitled1</Name>
+    <Compile Include="Sprites\HexagonTreeBoundaries\TopBoundary.png">
+      <Name>TopBoundary</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sprites\untitled2.png">
-      <Name>untitled2</Name>
+    <Compile Include="Sprites\HexagonTreeBoundaries\TopRightBoundary.png">
+      <Name>TopRightBoundary</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sprites\untitled3.png">
-      <Name>untitled3</Name>
+    <Compile Include="Sprites\HexagonTreeBoundaries\BottomRightBoundary.png">
+      <Name>BottomRightBoundary</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sprites\untitled4.png">
-      <Name>untitled4</Name>
+    <Compile Include="Sprites\HexagonTreeBoundaries\BottomBoundary.png">
+      <Name>BottomBoundary</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sprites\untitled5.png">
-      <Name>untitled5</Name>
+    <Compile Include="Sprites\HexagonTreeBoundaries\BottomLeftBoundary.png">
+      <Name>BottomLeftBoundary</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sprites\untitled6.png">
-      <Name>untitled6</Name>
+    <Compile Include="Sprites\HexagonTreeBoundaries\TopLeftBoundary.png">
+      <Name>TopLeftBoundary</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -183,8 +183,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Spritefonts\SmallSpriteFont.spritefont">
-      <Name>SmallSpriteFont</Name>
+    <Compile Include="Spritefonts\MotorwerkFont.spritefont">
+      <Name>MotorwerkFont</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>

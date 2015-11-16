@@ -74,17 +74,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cave.cs" />
+    <Compile Include="DrawStates.cs" />
     <Compile Include="GameControl.cs" />
     <Compile Include="Helicopter.cs" />
     <Compile Include="Hexagon.cs" />
     <Compile Include="Highscore.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="UpdateStates.cs" />
+    <Compile Include="WumpusGame.cs" />
     <Compile Include="Room.cs" />
-    <Compile Include="SpriteBatchExtension.cs" />
     <Compile Include="StoreScore.cs" />
     <Compile Include="Trivia2.0.cs" />
     <Compile Include="TriviaList2.0.cs" />

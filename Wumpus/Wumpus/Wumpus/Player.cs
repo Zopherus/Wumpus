@@ -12,11 +12,13 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Wumpus
 {
-	class Player
+	public class Player
 	{
 		public const int rectangleSize = 50;
-		private int turns, gold, arrows, direction, counter, counterHolder, currentRoom;
+        public const int Speed = 5;
+		private int turns, gold, arrows, counter, counterHolder, currentRoom;
 		private Rectangle position;
+        private Direction direction = Direction.Down;
 
 		//constructors
         public Player(Rectangle rectangle, int arrows, int gold)
@@ -31,10 +33,7 @@ namespace Wumpus
 			this.position = rectangle;
 		}
 
-		public Player()
-		{
-
-		}
+		public Player(){}
 
 		public int Gold
 		{
@@ -59,9 +58,6 @@ namespace Wumpus
 		public Rectangle Position
 		{
 			get { return position; }
-			set { position = CheckOffScreen(value) ? value : position;
-                  checkRoomChange(value);
-            }
 		}
 
 		public int CounterHolder
@@ -81,18 +77,7 @@ namespace Wumpus
 				counterHolder = (int)Math.Truncate(counter / 10.0);
 			}
 		}
-
-		//tells you which way your character is facing
-		//makes sure the direction is valid
-		//defaults to 1
-		public int Direction
-		{
-			get { return direction; }
-			set { 
-                    direction = (value > -1 && value < 4) ? value : 1;
-                }
-
-		}
+		
 
 		public void addArrows()
 		{
@@ -120,38 +105,38 @@ namespace Wumpus
 		}
 
 		//checks if position is within hexagon
-		private bool CheckOffScreen(Rectangle position)
+		private bool CheckOnScreen(Rectangle position)
 		{
             int[] AdjRooms = Cave.Matrix[currentRoom-1].ConnectedRooms;
             if (AdjRooms.Contains<int>(Hexagon.DoorTop(GameControl.Player.CurrentRoom)) && position.Y < 75)
             {
-                return true;
+                return false;
             }
             else if (AdjRooms.Contains<int>(Hexagon.DoorTopRight(GameControl.Player.CurrentRoom)) && (Position.Y < 2*Position.X - 790))
             {
-                return true;
+                return false;
             }
             else if (AdjRooms.Contains<int>(Hexagon.DoorBottomRight(GameControl.Player.CurrentRoom)) && (Position.Y > -1.5*Position.X + 925))
             {
-                return true;
+                return false;
             }
             else if (AdjRooms.Contains<int>(Hexagon.DoorBottom(GameControl.Player.CurrentRoom)) && position.Y > 285)
             {
-                return true;
+                return false;
             }
             else if (AdjRooms.Contains<int>(Hexagon.DoorBottomLeft(GameControl.Player.CurrentRoom))&& (Position.Y > 1.5*Position.X -190))
             {
-                return true;
+                return false;
             }
             else if (AdjRooms.Contains<int>(Hexagon.DoorTopLeft(GameControl.Player.CurrentRoom)) && (Position.Y < -2*Position.X + 750))
             {
-                return true;
+                return false;
             }
             else 
-                return Math.Pow(position.X - 375, 2) + Math.Pow(position.Y - 180, 2) < 12100;
+                return Math.Pow(position.X - 375, 2) + Math.Pow(position.Y - 180, 2) > 12100;
 		}
 
-        public void checkRoomChange(Rectangle position)
+        public void checkRoomChange()
         {
             int[] AdjRooms = Cave.Matrix[currentRoom-1].ConnectedRooms;
             if (AdjRooms.Contains<int>(Hexagon.DoorTop(GameControl.Player.CurrentRoom)) && position.Y < 20)
@@ -196,6 +181,58 @@ namespace Wumpus
                 currentRoom = Hexagon.DoorBottomRight(currentRoom);
                 resetPosition();
             }
+        }
+
+        public void MoveUp()
+        {
+            Rectangle newPosition = new Rectangle(position.X, position.Y - Speed, position.Width, position.Height);
+            if (CheckOnScreen(newPosition))
+            {
+                position = newPosition;
+                direction = Direction.Up;
+                counter++;
+            }
+            else
+                checkRoomChange();
+        }
+
+        public void MoveRight()
+        {
+            Rectangle newPosition = new Rectangle(position.X + Speed, position.Y, position.Width, position.Height);
+            if (CheckOnScreen(newPosition))
+            {
+                position = newPosition;
+                direction = Direction.Right;
+                counter++;
+            }
+            else
+                checkRoomChange();
+        }
+
+        public void MoveDown()
+        {
+            Rectangle newPosition = new Rectangle(position.X, position.Y + Speed, position.Width, position.Height);
+            if (CheckOnScreen(newPosition))
+            {
+                position = newPosition;
+                direction = Direction.Down;
+                counter++;
+            }
+            else
+                checkRoomChange();
+        }
+
+        public void MoveLeft()
+        {
+            Rectangle newPosition = new Rectangle(position.X - Speed, position.Y, position.Width, position.Height);
+            if (CheckOnScreen(newPosition))
+            {
+                position = newPosition;
+                direction = Direction.Left;
+                counter++;
+            }
+            else
+                checkRoomChange();
         }
 
         private void resetPosition()
