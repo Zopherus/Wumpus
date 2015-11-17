@@ -24,7 +24,7 @@ namespace Wumpus
 
         public static void Initialize()
         {
-            menu = true;
+			WumpusGame.GameState = GameState.Menu;
             Player = new Player(new Rectangle(375, 200, Player.rectangleSize, Player.rectangleSize), 3, 0);
             Player.CurrentRoom = 1;
         }
@@ -73,12 +73,12 @@ namespace Wumpus
 		public static void TriviaCorrect()
 		{
 			Player.addGold(1);
-            triviaWin = true;
+            WumpusGame.TriviaState = TriviaState.Correct;
 		}
 		public static void TriviaIncorrect()
 		{
 			Player.subtractGold(1);
-            triviaLose = true;
+			WumpusGame.TriviaState = TriviaState.Incorrect;
 		}
 		public int[] DisplayInv()
 		{

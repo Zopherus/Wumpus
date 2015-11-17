@@ -17,18 +17,23 @@ namespace Wumpus
 	///
     public enum GameState { Cave, Help, Highscore, Lose, Map, Menu, Shop, Trivia, TriviaLose, TriviaWin };
     public enum Direction { Up, Right, Down, Left };
+	public enum TriviaState { NotAnswered, Correct, Incorrect };
 
 	public class WumpusGame : Game
 	{   
         public static GraphicsDeviceManager Graphics { get; private set; }
         public static SpriteBatch SpriteBatch { get; private set; }
-        string[] strings;
+        
+		
+		public static string[] TriviaQuestions = new String[5];
 
         bool value = false;
         int time = 0;
         int triviaWinCounter = 0;
 
         public static GameState GameState;
+		//Only used when in the Trivia GameState
+		public static TriviaState TriviaState;
 
         public static Texture2D HexagonTexture { get; private set;  }
         public static Texture2D BlackTexture{ get; private set;  }
@@ -52,10 +57,12 @@ namespace Wumpus
         public static MouseState OldMouseState { get; private set; }
         public static MouseState MouseState { get; private set; }
 
-        public static Player Player { get; private set; }
-
         public static SpriteFont MotorwerkFont { get; private set; }
         public static SpriteFont SmallMotorwerkFont { get; private set; }
+
+		public static Player Player = new Player();
+
+
 
         public const int lineWidth = 1;
         public const int ScreenHeight = 600;
@@ -155,7 +162,7 @@ namespace Wumpus
             switch(GameState)
             {
                 case GameState.Cave:
-                    UpdateStates.UpdateCave();
+                    UpdateStates.UpdateCave(gameTime);
                     break;
                 case GameState.Help:
                     UpdateStates.UpdateHelp();
@@ -177,12 +184,6 @@ namespace Wumpus
                     break;
                 case GameState.Trivia:
                     UpdateStates.UpdateTrivia();
-                    break;
-                case GameState.TriviaLose:
-                    UpdateStates.UpdateTriviaLose();
-                    break;
-                case GameState.TriviaWin:
-                    UpdateStates.UpdateTriviaWin();
                     break;
             }
 			base.Update(gameTime);
@@ -222,12 +223,6 @@ namespace Wumpus
                     break;
                 case GameState.Trivia:
                     DrawStates.DrawTrivia();
-                    break;
-                case GameState.TriviaLose:
-                    DrawStates.DrawTriviaLose();
-                    break;
-                case GameState.TriviaWin:
-                    DrawStates.DrawTriviaWin();
                     break;
             }
             SpriteBatch.End();

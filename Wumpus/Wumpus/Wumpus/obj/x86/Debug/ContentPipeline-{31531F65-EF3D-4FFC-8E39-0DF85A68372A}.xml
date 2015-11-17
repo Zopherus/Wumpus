@@ -2,148 +2,13 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>Sprites\MoneyCurrency.png</Source>
-      <Name>Sprites\MoneyCurrency</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\MoneyCurrency.xnb</Output>
-      <Time>2015-07-16T20:52:04.1249434-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Sprites\Osama.png</Source>
-      <Name>Sprites\Osama</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Osama.xnb</Output>
-      <Time>2015-07-16T20:52:03.4399042-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Sprites\Bush.png</Source>
-      <Name>Sprites\Bush</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Bush.xnb</Output>
-      <Time>2015-07-16T20:52:03.4309037-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Sprites\Wall.png</Source>
-      <Name>Sprites\Wall</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Wall.xnb</Output>
-      <Time>2015-07-16T20:52:04.4379613-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Sprites\Helicopter.png</Source>
-      <Name>Sprites\Helicopter</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Helicopter.xnb</Output>
-      <Time>2015-07-16T20:52:04.0059365-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Sprites\ground.png</Source>
-      <Name>Sprites\ground</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\ground.xnb</Output>
-      <Time>2015-07-16T20:52:03.9949359-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Sprites\Bullets.png</Source>
-      <Name>Sprites\Bullets</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Bullets.xnb</Output>
-      <Time>2015-07-16T20:52:03.9369326-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Sprites\death.png</Source>
-      <Name>Sprites\death</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\death.xnb</Output>
-      <Time>2015-07-16T20:52:03.9479332-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Sprites\Red.png</Source>
-      <Name>Sprites\Red</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Red.xnb</Output>
-      <Time>2015-07-16T20:52:04.1469446-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Sprites\HUD.png</Source>
-      <Name>Sprites\HUD</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HUD.xnb</Output>
-      <Time>2015-07-16T20:52:04.0289379-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Sprites\OilSpill.png</Source>
-      <Name>Sprites\OilSpill</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\OilSpill.xnb</Output>
-      <Time>2015-07-16T20:52:04.136944-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Sprites\ShopBackground.png</Source>
-      <Name>Sprites\ShopBackground</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\ShopBackground.xnb</Output>
-      <Time>2015-07-16T20:52:04.2259491-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Sprites\Map.png</Source>
-      <Name>Sprites\Map</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Map.xnb</Output>
-      <Time>2015-07-16T20:52:04.0909414-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Sprites\Wallpaper.png</Source>
-      <Name>Sprites\Wallpaper</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Wallpaper.xnb</Output>
-      <Time>2015-07-16T20:52:04.4479618-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Sprites\White.png</Source>
-      <Name>Sprites\White</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\White.xnb</Output>
-      <Time>2015-07-16T20:52:04.4579624-07:00</Time>
-    </Item>
-    <Item>
       <Source>Sprites\MapHexagon.png</Source>
       <Name>Sprites\MapHexagon</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\MapHexagon.xnb</Output>
-      <Time>2015-07-16T20:52:04.1129427-07:00</Time>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\MapHexagon.xnb</Output>
+      <Time>2015-11-17T12:11:09.7182718-08:00</Time>
     </Item>
     <Item>
       <Source>Sprites\Black.png</Source>
@@ -151,8 +16,80 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Black.xnb</Output>
-      <Time>2015-07-16T20:52:03.9219317-07:00</Time>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Black.xnb</Output>
+      <Time>2015-11-17T12:11:09.7032703-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\MoneyCurrency.png</Source>
+      <Name>Sprites\MoneyCurrency</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\MoneyCurrency.xnb</Output>
+      <Time>2015-11-17T12:11:09.7192719-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Osama.png</Source>
+      <Name>Sprites\Osama</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Osama.xnb</Output>
+      <Time>2015-11-17T12:11:09.720272-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Bush.png</Source>
+      <Name>Sprites\Bush</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Bush.xnb</Output>
+      <Time>2015-11-17T12:11:09.7042704-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Wall.png</Source>
+      <Name>Sprites\Wall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Wall.xnb</Output>
+      <Time>2015-11-17T12:11:09.7262726-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Helicopter.png</Source>
+      <Name>Sprites\Helicopter</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Helicopter.xnb</Output>
+      <Time>2015-11-17T12:11:09.7062706-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Ground.png</Source>
+      <Name>Sprites\Ground</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Ground.xnb</Output>
+      <Time>2015-11-17T12:11:09.7322732-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Bullets.png</Source>
+      <Name>Sprites\Bullets</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Bullets.xnb</Output>
+      <Time>2015-11-17T12:11:09.7032703-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Death.png</Source>
+      <Name>Sprites\Death</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Death.xnb</Output>
+      <Time>2015-11-17T12:11:09.7292729-08:00</Time>
     </Item>
     <Item>
       <Source>Sprites\HexagonTreeBoundaries\DefaultBoundary.png</Source>
@@ -160,8 +97,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\DefaultBoundary.xnb</Output>
-      <Time>2015-07-16T20:52:04.3169543-07:00</Time>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\DefaultBoundary.xnb</Output>
+      <Time>2015-11-17T12:11:09.7122712-08:00</Time>
     </Item>
     <Item>
       <Source>Sprites\HexagonTreeBoundaries\TopBoundary.png</Source>
@@ -169,8 +106,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\TopBoundary.xnb</Output>
-      <Time>2015-07-16T20:52:04.3269549-07:00</Time>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\TopBoundary.xnb</Output>
+      <Time>2015-11-17T12:11:09.7122712-08:00</Time>
     </Item>
     <Item>
       <Source>Sprites\HexagonTreeBoundaries\TopRightBoundary.png</Source>
@@ -178,8 +115,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\TopRightBoundary.xnb</Output>
-      <Time>2015-07-16T20:52:04.3389556-07:00</Time>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\TopRightBoundary.xnb</Output>
+      <Time>2015-11-17T12:11:09.7142714-08:00</Time>
     </Item>
     <Item>
       <Source>Sprites\HexagonTreeBoundaries\BottomRightBoundary.png</Source>
@@ -187,8 +124,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\BottomRightBoundary.xnb</Output>
-      <Time>2015-07-16T20:52:04.3509563-07:00</Time>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\BottomRightBoundary.xnb</Output>
+      <Time>2015-11-17T12:11:09.710271-08:00</Time>
     </Item>
     <Item>
       <Source>Sprites\HexagonTreeBoundaries\BottomBoundary.png</Source>
@@ -196,8 +133,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\BottomBoundary.xnb</Output>
-      <Time>2015-07-16T20:52:04.3619569-07:00</Time>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\BottomBoundary.xnb</Output>
+      <Time>2015-11-17T12:11:09.7082708-08:00</Time>
     </Item>
     <Item>
       <Source>Sprites\HexagonTreeBoundaries\BottomLeftBoundary.png</Source>
@@ -205,8 +142,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\BottomLeftBoundary.xnb</Output>
-      <Time>2015-07-16T20:52:04.3719575-07:00</Time>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\BottomLeftBoundary.xnb</Output>
+      <Time>2015-11-17T12:11:09.7092709-08:00</Time>
     </Item>
     <Item>
       <Source>Sprites\HexagonTreeBoundaries\TopLeftBoundary.png</Source>
@@ -214,8 +151,71 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\TopLeftBoundary.xnb</Output>
-      <Time>2015-07-16T20:52:04.3819581-07:00</Time>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\TopLeftBoundary.xnb</Output>
+      <Time>2015-11-17T12:11:09.7132713-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Red.png</Source>
+      <Name>Sprites\Red</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Red.xnb</Output>
+      <Time>2015-11-17T12:11:09.7212721-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\HUD.png</Source>
+      <Name>Sprites\HUD</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HUD.xnb</Output>
+      <Time>2015-11-17T12:11:09.7052705-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\OilSpill.png</Source>
+      <Name>Sprites\OilSpill</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\OilSpill.xnb</Output>
+      <Time>2015-11-17T12:11:09.720272-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\ShopBackground.png</Source>
+      <Name>Sprites\ShopBackground</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\ShopBackground.xnb</Output>
+      <Time>2015-11-17T12:11:09.7242724-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Map.png</Source>
+      <Name>Sprites\Map</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Map.xnb</Output>
+      <Time>2015-11-17T12:11:09.7182718-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\Wallpaper.png</Source>
+      <Name>Sprites\Wallpaper</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Wallpaper.xnb</Output>
+      <Time>2015-11-17T12:11:09.7272727-08:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\White.png</Source>
+      <Name>Sprites\White</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\White.xnb</Output>
+      <Time>2015-11-17T12:11:09.7282728-08:00</Time>
     </Item>
     <Item>
       <Source>Spritefonts\SmallMotorwerkFont.spritefont</Source>
@@ -223,8 +223,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Spritefonts\SmallMotorwerkFont.xnb</Output>
-      <Time>2015-07-16T20:52:04.2699516-07:00</Time>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Spritefonts\SmallMotorwerkFont.xnb</Output>
+      <Time>2015-11-17T12:11:09.7022702-08:00</Time>
     </Item>
     <Item>
       <Source>Spritefonts\MotorwerkFont.spritefont</Source>
@@ -232,8 +232,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Spritefonts\MotorwerkFont.xnb</Output>
-      <Time>2015-07-16T20:52:04.2519506-07:00</Time>
+      <Output>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Spritefonts\MotorwerkFont.xnb</Output>
+      <Time>2015-11-17T12:11:09.7012701-08:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -242,10 +242,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\WumpusContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\WumpusContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -274,7 +274,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2015-06-22T18:06:10.1037805-07:00</Value>
+        <Value>2014-08-08T09:26:57.4645622-07:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

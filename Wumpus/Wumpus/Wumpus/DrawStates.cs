@@ -63,55 +63,17 @@ namespace Wumpus
                     WumpusGame.SpriteBatch.Draw(WumpusGame.TreeBoundaryTextures[i], new Rectangle(0, 0, 800, 450), Color.White);
             }
             //map button
-            WumpusGame.SpriteBatch.Draw(WumpusGame.BlackTexture, new Rectangle(40, 475, 150, 1), Color.Black);
-            WumpusGame.SpriteBatch.Draw(WumpusGame.BlackTexture, new Rectangle(190, 475, 1, 90), Color.Black);
-            WumpusGame.SpriteBatch.Draw(WumpusGame.BlackTexture, new Rectangle(40, 475, 1, 90), Color.Black);
-            WumpusGame.SpriteBatch.Draw(WumpusGame.BlackTexture, new Rectangle(40, 565, 151, 1), Color.Black);
+			DrawRectangleOutline(new Rectangle(40, 475, 150, 90), WumpusGame.BlackTexture, 1);
+
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Map", new Vector2(115 - (WumpusGame.MotorwerkFont.MeasureString("Map")).X / 2, 520 - (WumpusGame.MotorwerkFont.MeasureString("Map")).Y / 2), Color.Black);
 
             if (GameControl.GameMap.Helicopter1 == GameControl.Player.CurrentRoom || GameControl.GameMap.Helicopter2 == GameControl.Player.CurrentRoom)
             {
-                if (!value)
-                {
-                    value = true;
-                    time = (int)gameTime.TotalGameTime.Seconds;
-                }
-                WumpusGame.SpriteBatch.Draw(WumpusGame.HelicopterTexture, GameControl.helicopter.Position, GameControl.helicopter.SourceRectangle, Color.White);
-                if (gameTime.TotalGameTime.Seconds - time > 3)
-                {
-                    GameControl.Player.CurrentRoom = GameControl.GameMap.BatCarryOff();
-                    value = false;
-                }
+				WumpusGame.SpriteBatch.Draw(WumpusGame.HelicopterTexture, GameControl.helicopter.Position, GameControl.helicopter.SourceRectangle, Color.White);
             }
             if (GameControl.GameMap.OsamaRoom == GameControl.Player.CurrentRoom)
             {
-                if (!value)
-                {
-                    value = true;
-                    time = (int)gameTime.TotalGameTime.Seconds;
-                    triviaWinCounter = 0;
-                }
                 WumpusGame.SpriteBatch.Draw(WumpusGame.OsamaTexture, new Rectangle(375, 200, 50, 50), new Rectangle(0, 0, Player.SpriteSheetWidth, Player.SpriteSheetHeight), Color.White);
-                if (gameTime.TotalGameTime.Seconds - time > 3)
-                {
-                    int counter = 0;
-                    if (counter < 5 && triviaWinCounter < 3 && counter - triviaWinCounter < 3)
-                    {
-                        strings = GameControl.newTrivia();
-                        //All Game control should be in update states
-                        WumpusGame.GameState = GameState.Trivia;
-                        counter++;
-                    }
-                    else if (triviaWinCounter >= 3)
-                    {
-                        GameControl.Player.CurrentRoom = GameControl.GameMap.BatCarryOff();
-                        value = false;
-                    }
-                    else if (counter - triviaWinCounter >= 3)
-                    {
-                        WumpusGame.GameState = GameState.Lose;
-                    }
-                }
             }
         }
         public static void DrawHelp() 
@@ -130,7 +92,7 @@ namespace Wumpus
         public static void DrawHighscore() 
         {
             WumpusGame.SpriteBatch.Draw(WumpusGame.ShopBackgroundTexture, new Rectangle(0, 0, 800, 600), Color.White);
-            List<StoreScore> highscore = Highscore.GetScore();
+            List<Score> highscore = Highscore.GetScore();
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "High Scores: ", new Vector2(0, 0), Color.White);
             int number = (highscore.Count > 10) ? 10 : highscore.Count;
             for (int i = 0; i < number; i++)
@@ -168,8 +130,6 @@ namespace Wumpus
         }
         public static void DrawMenu() 
         {
-            //50 gap in between each rectangle
-            //adding 1 to fill in the corner of rectangle
             WumpusGame.SpriteBatch.Draw(WumpusGame.WallpaperTexture, new Rectangle(0, 0, WumpusGame.ScreenWidth, WumpusGame.ScreenHeight), Color.White);
 
             DrawRectangleOutline(Menu.NewGameRectangle, WumpusGame.BlackTexture, 1);
@@ -188,36 +148,35 @@ namespace Wumpus
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Exit", new Vector2(Menu.ExitRectangle.X + (Menu.ExitRectangle.Width - WumpusGame.MotorwerkFont.MeasureString("Exit").X) / 2,
                                     Menu.ExitRectangle.Y + (Menu.ExitRectangle.Height - WumpusGame.MotorwerkFont.MeasureString("Exit").Y) / 2), Color.Black);
         }
+
         public static void DrawShop() 
         {
-            WumpusGame.SpriteBatch.Draw(shopBackgroundTexture, new Rectangle(0, 0, 800, 600), Color.White);
+            WumpusGame.SpriteBatch.Draw(WumpusGame.ShopBackgroundTexture, new Rectangle(0, 0, WumpusGame.ScreenWidth, WumpusGame.ScreenHeight), Color.White);
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Press left to go back", new Vector2(0, 560), Color.White);
         }
+
         public static void DrawTrivia() 
         {
-            WumpusGame.SpriteBatch.Draw(WumpusGame.ShopBackgroundTexture, new Rectangle(0, 0, 800, 600), Color.White);
-            string question = strings[0];
-            string answer1 = "A: " + strings[1];
-            string answer2 = "B: " + strings[2];
-            string answer3 = "C: " + strings[3];
-            string answer4 = "D: " + strings[4];
-            int correctAnswer = int.Parse(strings[5]);
+            WumpusGame.SpriteBatch.Draw(WumpusGame.ShopBackgroundTexture, new Rectangle(0, 0, WumpusGame.ScreenWidth, WumpusGame.ScreenHeight), Color.White);
+            string question = WumpusGame.TriviaQuestions[0];
+			string answer1 = "A: " + WumpusGame.TriviaQuestions[1];
+			string answer2 = "B: " + WumpusGame.TriviaQuestions[2];
+			string answer3 = "C: " + WumpusGame.TriviaQuestions[3];
+			string answer4 = "D: " + WumpusGame.TriviaQuestions[4];
             WumpusGame.SpriteBatch.DrawString(WumpusGame.SmallMotorwerkFont, question, new Vector2((WumpusGame.ScreenWidth - WumpusGame.SmallMotorwerkFont.MeasureString(question).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.SmallMotorwerkFont.MeasureString(question).Y) / 12), Color.White);
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer1, new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString(answer1).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.MotorwerkFont.MeasureString(answer1).Y) * 4 / 16 + 30), Color.White);
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer2, new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString(answer2).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.MotorwerkFont.MeasureString(answer2).Y) * 6 / 16 + 30), Color.White);
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer3, new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString(answer3).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.MotorwerkFont.MeasureString(answer3).Y) * 8 / 16 + 30), Color.White);
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer4, new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString(answer4).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.MotorwerkFont.MeasureString(answer4).Y) * 10 / 16 + 30), Color.White);
-            if (GameControl.triviaWin)
+            if (WumpusGame.TriviaState == TriviaState.Correct)
             {
-                WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Correct", new Vector2((screenWidth - WumpusGame.MotorwerkFont.MeasureString("Correct").X) / 2, 560), Color.White);
+                WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Correct", new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString("Correct").X) / 2, 560), Color.White);
             }
-            if (GameControl.triviaLose)
+            if (WumpusGame.TriviaState == TriviaState.Incorrect)
             {
-                WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Incorrect", new Vector2((screenWidth - WumpusGame.MotorwerkFont.MeasureString("Incorrect").X) / 2, 560), Color.White);
+                WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Incorrect", new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString("Incorrect").X) / 2, 560), Color.White);
             }
         }
-        public static void DrawTriviaLose() { }
-        public static void DrawTriviaWin() { }
 
         //Draws the outline of a rectangle with a certain texture and a certain width on the border
         private static void DrawRectangleOutline(Rectangle rectangle, Texture2D texture, int lineWidth)

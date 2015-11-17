@@ -8,23 +8,23 @@ namespace Wumpus
 {
 	class Highscore
 	{
-		static List<StoreScore> highscore = new List<StoreScore>();
+		static List<Score> HighscoreList = new List<Score>();
 
-		public static void addScore(string n, int s)
+		public static void addScore(string Name, int Score)
 		{
-			StoreScore score = new StoreScore(n, s);
-			highscore.Add(score);
+			Score score = new Score(Name, Score);
+			HighscoreList.Add(score);
 
-			highscore.Sort(new scoreComparer());
+			HighscoreList.Sort(new scoreComparer());
 
 			WriteToFile();
 		}
 
-		public static List<StoreScore> GetScore()
+		public static List<Score> GetScore()
 		{
-            highscore.Clear();
+            HighscoreList.Clear();
             ReadFromFile();
-			return highscore;
+			return HighscoreList;
 		}
 
 		private static void ReadFromFile()
@@ -39,9 +39,9 @@ namespace Wumpus
 				while (input != null)
 				{
 					string[] data = input.Split(',');
-					StoreScore s = new StoreScore(data[0], int.Parse(data[1]));
+					Score s = new Score(data[0], int.Parse(data[1]));
 
-					highscore.Add(s);
+					HighscoreList.Add(s);
 
 					input = sr.ReadLine();
 				}
@@ -50,7 +50,7 @@ namespace Wumpus
 			catch
 			{
 				//No Current Scores in File
-                highscore.Add(new StoreScore("No scores to display", 0));
+                HighscoreList.Add(new Score("No scores to display", 0));
 			}
 		}
 
@@ -58,20 +58,20 @@ namespace Wumpus
 		{
             StreamWriter sw = new StreamWriter("Content/Text Files/HighScores.txt");
 
-            foreach (StoreScore s in highscore)
+            foreach (Score score in HighscoreList)
             {
-                string output = s.Name + "," + s.Score.ToString();
+                string output = score.Name + "," + score.Points.ToString();
                 sw.WriteLine(output);
             }
 
 			sw.Close();
 		}
 	}
-	class scoreComparer : Comparer<StoreScore>
+	class scoreComparer : Comparer<Score>
 	{
-		public override int Compare(StoreScore x, StoreScore y)
+		public override int Compare(Score x, Score y)
 		{
-			return y.Score.CompareTo(x.Score);
+			return y.Points.CompareTo(x.Points);
 		}
 	}
 }

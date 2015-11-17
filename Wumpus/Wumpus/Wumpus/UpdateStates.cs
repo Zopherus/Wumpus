@@ -9,7 +9,17 @@ namespace Wumpus
 {
     class UpdateStates
     {
-        public static void UpdateCave() 
+		private static string[] TriviaQuestions = new string[5];
+		private static bool IsInHelicopterRoom = false;
+		private static int TimeInHelicopterRoom = 0;
+
+		private static bool IsInOsamaRoom = false;
+		private static int TimeInOsamaRoom = 0;
+
+		private static int TriviaWinCounter = 0;
+		private static int TriviaQuestionCounter = 0;
+
+        public static void UpdateCave(GameTime gameTime) 
         {
             if (WumpusGame.MouseState.LeftButton == ButtonState.Pressed && WumpusGame.OldMouseState.LeftButton == ButtonState.Released)
             {
@@ -37,6 +47,49 @@ namespace Wumpus
             {
                 WumpusGame.Player.MoveDown();
             }
+			if (GameControl.GameMap.Helicopter1 == GameControl.Player.CurrentRoom || GameControl.GameMap.Helicopter2 == GameControl.Player.CurrentRoom)
+			{
+				//When first enter helicopter room
+				if (!IsInHelicopterRoom)
+				{
+					IsInHelicopterRoom = true;
+					int time = (int)gameTime.TotalGameTime.Seconds;
+				}
+
+				if (gameTime.TotalGameTime.Seconds - TimeInHelicopterRoom > 3)
+				{
+					GameControl.Player.CurrentRoom = GameControl.GameMap.BatCarryOff();
+					TimeInHelicopterRoom = 0;
+					IsInHelicopterRoom = false;
+				}
+			}
+			if (GameControl.GameMap.OsamaRoom == GameControl.Player.CurrentRoom)
+			{
+				if (!IsInOsamaRoom)
+				{
+					IsInOsamaRoom = true;
+					TimeInOsamaRoom = (int)gameTime.TotalGameTime.Seconds;
+					TriviaWinCounter = 0;
+				}
+				if (gameTime.TotalGameTime.Seconds - TimeInOsamaRoom > 3)
+				{
+					if (TriviaQuestionCounter < 5 && TriviaWinCounter < 3 && TriviaQuestionCounter - TriviaWinCounter < 3)
+					{
+						WumpusGame.TriviaQuestions = GameControl.newTrivia();
+						WumpusGame.GameState = GameState.Trivia;
+						TriviaQuestionCounter++;
+					}
+					else if (TriviaWinCounter >= 3)
+					{
+						GameControl.Player.CurrentRoom = GameControl.GameMap.BatCarryOff();
+						IsInOsamaRoom = false;
+					}
+					else if (TriviaQuestionCounter - TriviaWinCounter >= 3)
+					{
+						WumpusGame.GameState = GameState.Lose;
+					}
+				}
+			}
         }
 
         public static void UpdateHelp() 
@@ -99,10 +152,10 @@ namespace Wumpus
         {
             if (WumpusGame.KeyboardState.IsKeyDown(Keys.A))
             {
-                if (strings[5] == "1")
+                if (TriviaQuestions[5] == "1")
                 {
                     GameControl.TriviaCorrect();
-                    triviaWinCounter++;
+                    TriviaWinCounter++;
                 }
                 else
                 {
@@ -111,10 +164,10 @@ namespace Wumpus
             }
             if (WumpusGame.KeyboardState.IsKeyDown(Keys.B))
             {
-                if (strings[5] == "2")
+                if (TriviaQuestions[5] == "2")
                 {
                     GameControl.TriviaCorrect();
-                    triviaWinCounter++;
+                    TriviaWinCounter++;
                 }
                 else
                 {
@@ -123,10 +176,10 @@ namespace Wumpus
             }
             if (WumpusGame.KeyboardState.IsKeyDown(Keys.C))
             {
-                if (strings[5] == "3")
+                if (TriviaQuestions[5] == "3")
                 {
                     GameControl.TriviaCorrect();
-                    triviaWinCounter++;
+                    TriviaWinCounter++;
                 }
                 else
                 {
@@ -135,32 +188,24 @@ namespace Wumpus
             }
             if (WumpusGame.KeyboardState.IsKeyDown(Keys.D))
             {
-                if (strings[5] == "4")
+                if (TriviaQuestions[5] == "4")
                 {
                     GameControl.TriviaCorrect();
-                    triviaWinCounter++;
+                    TriviaWinCounter++;
                 }
                 else
                 {
                     GameControl.TriviaIncorrect();
                 }
             }
-        }
-
-        public static void UpdateTriviaLose() 
-        {
-            if (WumpusGame.MouseState.LeftButton == ButtonState.Pressed && WumpusGame.OldMouseState.LeftButton == ButtonState.Released)
-            {
-                WumpusGame.GameState = GameState.Cave;
-            }
-        }
-
-        public static void UpdateTriviaWin() 
-        {
-            if (WumpusGame.MouseState.LeftButton == ButtonState.Pressed && WumpusGame.OldMouseState.LeftButton == ButtonState.Released)
-            {
-                WumpusGame.GameState = GameState.Cave;
-            }
+			//If the question has been answered
+			if (WumpusGame.TriviaState != TriviaState.NotAnswered)
+			{
+				if (WumpusGame.MouseState.LeftButton == ButtonState.Pressed && WumpusGame.OldMouseState.LeftButton == ButtonState.Released)
+				{
+					WumpusGame.GameState = GameState.Cave;
+				}
+			}
         }
     }
 }
