@@ -15,14 +15,11 @@ namespace Wumpus
 	/// This is the main type for your game
 	/// </summary>
 	///
-    public enum GameState {Cave, Help, Highscore, Lose, Map, Menu, Shop, Trivia, TriviaLose, TriviaWin };
-    public enum Direction { Up, Right, Down, Left};
+    public enum GameState { Cave, Help, Highscore, Lose, Map, Menu, Shop, Trivia, TriviaLose, TriviaWin };
+    public enum Direction { Up, Right, Down, Left };
 
 	public class WumpusGame : Game
-	{
-        public const int SpriteSheetHeight = 32;
-        public const int SpriteSheetWidth = 32;
-
+	{   
         public static GraphicsDeviceManager Graphics { get; private set; }
         public static SpriteBatch SpriteBatch { get; private set; }
         string[] strings;
@@ -60,10 +57,10 @@ namespace Wumpus
         public static SpriteFont MotorwerkFont { get; private set; }
         public static SpriteFont SmallMotorwerkFont { get; private set; }
 
-        const int lineWidth = 1;
+        public const int lineWidth = 1;
         public const int ScreenHeight = 600;
         public const int ScreenWidth = 800;
-        const int hexagonSize = 30;
+        public const int hexagonSize = 30;
 
 		public WumpusGame()
 		{

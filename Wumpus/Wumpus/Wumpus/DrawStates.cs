@@ -18,7 +18,7 @@ namespace Wumpus
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, GameControl.Player.Gold.ToString(), new Vector2(660 - WumpusGame.MotorwerkFont.MeasureString("0").X * (int)Math.Log10((double)GameControl.Player.Gold + 1), 465), Color.Black);
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, GameControl.Player.Arrows.ToString(), new Vector2(660 - WumpusGame.MotorwerkFont.MeasureString("0").X * (int)Math.Log10((double)GameControl.Player.Arrows + 1), 525), Color.Black);
             WumpusGame.SpriteBatch.Draw(WumpusGame.BlackTexture, new Rectangle(0, 450, 800, 1), Color.White);
-            WumpusGame.SpriteBatch.Draw(WumpusGame.BushTexture, GameControl.Player.Position, new Rectangle(32 * GameControl.Player.CounterHolder, 32 * GameControl.Player.Direction, spriteSheetWidth, spriteSheetHeight), Color.White);
+            WumpusGame.SpriteBatch.Draw(WumpusGame.BushTexture, GameControl.Player.Position, new Rectangle(32 * GameControl.Player.CounterHolder, Player.SpriteSheetHeight * (int)WumpusGame.Player.Direction, Player.SpriteSheetWidth, Player.SpriteSheetHeight), Color.White);
             WumpusGame.SpriteBatch.Draw(WumpusGame.MoneyCurrencyTexture, new Rectangle(675, 445, 100, 100), Color.White);
             WumpusGame.SpriteBatch.Draw(WumpusGame.BulletsTexture, new Rectangle(675, 500, 100, 100), new Rectangle(0, 0, 45, 41), Color.White);
             int[] AdjRooms = Cave.Matrix[GameControl.Player.CurrentRoom - 1].ConnectedRooms;
@@ -91,7 +91,7 @@ namespace Wumpus
                     time = (int)gameTime.TotalGameTime.Seconds;
                     triviaWinCounter = 0;
                 }
-                WumpusGame.SpriteBatch.Draw(WumpusGame.OsamaTexture, new Rectangle(375, 200, 50, 50), new Rectangle(0, 0, WumpusGame.SpriteSheetWidth, WumpusGame.SpriteSheetHeight), Color.White);
+                WumpusGame.SpriteBatch.Draw(WumpusGame.OsamaTexture, new Rectangle(375, 200, 50, 50), new Rectangle(0, 0, Player.SpriteSheetWidth, Player.SpriteSheetHeight), Color.White);
                 if (gameTime.TotalGameTime.Seconds - time > 3)
                 {
                     int counter = 0;
@@ -99,8 +99,7 @@ namespace Wumpus
                     {
                         strings = GameControl.newTrivia();
                         //All Game control should be in update states
-                        GameControl.resetGameState();
-                        GameControl.trivia = true;
+                        WumpusGame.GameState = GameState.Trivia;
                         counter++;
                     }
                     else if (triviaWinCounter >= 3)
@@ -110,8 +109,7 @@ namespace Wumpus
                     }
                     else if (counter - triviaWinCounter >= 3)
                     {
-                        GameControl.resetGameState();
-                        GameControl.lose = true;
+                        WumpusGame.GameState = GameState.Lose;
                     }
                 }
             }
@@ -172,41 +170,23 @@ namespace Wumpus
         {
             //50 gap in between each rectangle
             //adding 1 to fill in the corner of rectangle
-            WumpusGame.SpriteBatch.Draw(wallpaperTexture, new Rectangle(0, 0, 800, 600), Color.White);
+            WumpusGame.SpriteBatch.Draw(WumpusGame.WallpaperTexture, new Rectangle(0, 0, WumpusGame.ScreenWidth, WumpusGame.ScreenHeight), Color.White);
 
-            //New Game Rectangle
-            WumpusGame.SpriteBatch.Draw(blackTexture, new Rectangle(Menu.NewGameRectangle.X, newGameRectangle.Y, newGameRectangle.Width, lineWidth), Color.Black);
-            WumpusGame.SpriteBatch.Draw(blackTexture, new Rectangle(newGameRectangle.X + newGameRectangle.Width, newGameRectangle.Y, lineWidth, newGameRectangle.Height), Color.Black);
-            WumpusGame.SpriteBatch.Draw(blackTexture, new Rectangle(newGameRectangle.X, newGameRectangle.Y + newGameRectangle.Height, newGameRectangle.Width + 1, lineWidth), Color.Black);
-            WumpusGame.SpriteBatch.Draw(blackTexture, new Rectangle(newGameRectangle.X, newGameRectangle.Y, lineWidth, newGameRectangle.Height), Color.Black);
-
-            //High Score Rectangle
-            WumpusGame.SpriteBatch.Draw(blackTexture, new Rectangle(highScoreRectangle.X, highScoreRectangle.Y, highScoreRectangle.Width, lineWidth), Color.Black);
-            WumpusGame.SpriteBatch.Draw(blackTexture, new Rectangle(highScoreRectangle.X + highScoreRectangle.Width, highScoreRectangle.Y, lineWidth, highScoreRectangle.Height), Color.Black);
-            WumpusGame.SpriteBatch.Draw(blackTexture, new Rectangle(highScoreRectangle.X, highScoreRectangle.Y + highScoreRectangle.Height, highScoreRectangle.Width + 1, lineWidth), Color.Black);
-            WumpusGame.SpriteBatch.Draw(blackTexture, new Rectangle(highScoreRectangle.X, highScoreRectangle.Y, lineWidth, highScoreRectangle.Height), Color.Black);
-
-            //Help Rectangle
-            WumpusGame.SpriteBatch.Draw(blackTexture, new Rectangle(helpRectangle.X, helpRectangle.Y, helpRectangle.Width, lineWidth), Color.Black);
-            WumpusGame.SpriteBatch.Draw(blackTexture, new Rectangle(helpRectangle.X + helpRectangle.Width, helpRectangle.Y, lineWidth, helpRectangle.Height), Color.Black);
-            WumpusGame.SpriteBatch.Draw(blackTexture, new Rectangle(helpRectangle.X, helpRectangle.Y + helpRectangle.Height, helpRectangle.Width + 1, lineWidth), Color.Black);
-            WumpusGame.SpriteBatch.Draw(blackTexture, new Rectangle(helpRectangle.X, helpRectangle.Y, lineWidth, helpRectangle.Height), Color.Black);
-
-            //Exit Rectangle
-            WumpusGame.SpriteBatch.Draw(blackTexture, new Rectangle(exitRectangle.X, exitRectangle.Y, exitRectangle.Width, lineWidth), Color.Black);
-            WumpusGame.SpriteBatch.Draw(blackTexture, new Rectangle(exitRectangle.X + exitRectangle.Width, exitRectangle.Y, lineWidth, exitRectangle.Height), Color.Black);
-            WumpusGame.SpriteBatch.Draw(blackTexture, new Rectangle(exitRectangle.X, exitRectangle.Y + exitRectangle.Height, exitRectangle.Width + 1, lineWidth), Color.Black);
-            WumpusGame.SpriteBatch.Draw(blackTexture, new Rectangle(exitRectangle.X, exitRectangle.Y, lineWidth, exitRectangle.Height), Color.Black);
+            DrawRectangleOutline(Menu.NewGameRectangle, WumpusGame.BlackTexture, 1);
+            DrawRectangleOutline(Menu.HighScoreRectangle, WumpusGame.BlackTexture, 1);
+            DrawRectangleOutline(Menu.HelpRectangle, WumpusGame.BlackTexture, 1);
+            DrawRectangleOutline(Menu.ExitRectangle, WumpusGame.BlackTexture, 1);
+            
 
             //use WumpusGame.MotorwerkFont.MeasureString() to measure the string and place in middle of rectangle
-            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "New Game", new Vector2(newGameRectangle.X + (newGameRectangle.Width - WumpusGame.MotorwerkFont.MeasureString("New Game").X) / 2,
-                                    newGameRectangle.Y + (newGameRectangle.Height - WumpusGame.MotorwerkFont.MeasureString("New Game").Y) / 2), Color.Black);
-            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "High Scores", new Vector2(highScoreRectangle.X + (highScoreRectangle.Width - WumpusGame.MotorwerkFont.MeasureString("High Scores").X) / 2,
-                                    highScoreRectangle.Y + (highScoreRectangle.Height - WumpusGame.MotorwerkFont.MeasureString("High Scores").Y) / 2), Color.Black);
-            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Help", new Vector2(helpRectangle.X + (helpRectangle.Width - WumpusGame.MotorwerkFont.MeasureString("Help").X) / 2,
-                                    helpRectangle.Y + (helpRectangle.Height - WumpusGame.MotorwerkFont.MeasureString("Help").Y) / 2), Color.Black);
-            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Exit", new Vector2(exitRectangle.X + (exitRectangle.Width - WumpusGame.MotorwerkFont.MeasureString("Exit").X) / 2,
-                                    exitRectangle.Y + (exitRectangle.Height - WumpusGame.MotorwerkFont.MeasureString("Exit").Y) / 2), Color.Black);
+            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "New Game", new Vector2(Menu.NewGameRectangle.X + (Menu.NewGameRectangle.Width - WumpusGame.MotorwerkFont.MeasureString("New Game").X) / 2,
+                                    Menu.NewGameRectangle.Y + (Menu.NewGameRectangle.Height - WumpusGame.MotorwerkFont.MeasureString("New Game").Y) / 2), Color.Black);
+            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "High Scores", new Vector2(Menu.HighScoreRectangle.X + (Menu.HighScoreRectangle.Width - WumpusGame.MotorwerkFont.MeasureString("High Scores").X) / 2,
+                                    Menu.HighScoreRectangle.Y + (Menu.HighScoreRectangle.Height - WumpusGame.MotorwerkFont.MeasureString("High Scores").Y) / 2), Color.Black);
+            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Help", new Vector2(Menu.HelpRectangle.X + (Menu.HelpRectangle.Width - WumpusGame.MotorwerkFont.MeasureString("Help").X) / 2,
+                                    Menu.HelpRectangle.Y + (Menu.HelpRectangle.Height - WumpusGame.MotorwerkFont.MeasureString("Help").Y) / 2), Color.Black);
+            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Exit", new Vector2(Menu.ExitRectangle.X + (Menu.ExitRectangle.Width - WumpusGame.MotorwerkFont.MeasureString("Exit").X) / 2,
+                                    Menu.ExitRectangle.Y + (Menu.ExitRectangle.Height - WumpusGame.MotorwerkFont.MeasureString("Exit").Y) / 2), Color.Black);
         }
         public static void DrawShop() 
         {
@@ -215,18 +195,18 @@ namespace Wumpus
         }
         public static void DrawTrivia() 
         {
-            WumpusGame.SpriteBatch.Draw(shopBackgroundTexture, new Rectangle(0, 0, 800, 600), Color.White);
+            WumpusGame.SpriteBatch.Draw(WumpusGame.ShopBackgroundTexture, new Rectangle(0, 0, 800, 600), Color.White);
             string question = strings[0];
             string answer1 = "A: " + strings[1];
             string answer2 = "B: " + strings[2];
             string answer3 = "C: " + strings[3];
             string answer4 = "D: " + strings[4];
             int correctAnswer = int.Parse(strings[5]);
-            WumpusGame.SpriteBatch.DrawString(WumpusGame.SmallMotorwerkFont, question, new Vector2((screenWidth -WumpusGame.SmallMotorwerkFont.MeasureString(question).X) / 2, (screenHeight - WumpusGame.SmallMotorwerkFont.MeasureString(question).Y) / 12), Color.White);
-            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer1, new Vector2((screenWidth - WumpusGame.MotorwerkFont.MeasureString(answer1).X) / 2, (screenHeight - WumpusGame.MotorwerkFont.MeasureString(answer1).Y) * 4 / 16 + 30), Color.White);
-            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer2, new Vector2((screenWidth - WumpusGame.MotorwerkFont.MeasureString(answer2).X) / 2, (screenHeight - WumpusGame.MotorwerkFont.MeasureString(answer2).Y) * 6 / 16 + 30), Color.White);
-            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer3, new Vector2((screenWidth - WumpusGame.MotorwerkFont.MeasureString(answer3).X) / 2, (screenHeight - WumpusGame.MotorwerkFont.MeasureString(answer3).Y) * 8 / 16 + 30), Color.White);
-            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer4, new Vector2((screenWidth - WumpusGame.MotorwerkFont.MeasureString(answer4).X) / 2, (screenHeight - WumpusGame.MotorwerkFont.MeasureString(answer4).Y) * 10 / 16 + 30), Color.White);
+            WumpusGame.SpriteBatch.DrawString(WumpusGame.SmallMotorwerkFont, question, new Vector2((WumpusGame.ScreenWidth - WumpusGame.SmallMotorwerkFont.MeasureString(question).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.SmallMotorwerkFont.MeasureString(question).Y) / 12), Color.White);
+            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer1, new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString(answer1).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.MotorwerkFont.MeasureString(answer1).Y) * 4 / 16 + 30), Color.White);
+            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer2, new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString(answer2).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.MotorwerkFont.MeasureString(answer2).Y) * 6 / 16 + 30), Color.White);
+            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer3, new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString(answer3).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.MotorwerkFont.MeasureString(answer3).Y) * 8 / 16 + 30), Color.White);
+            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer4, new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString(answer4).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.MotorwerkFont.MeasureString(answer4).Y) * 10 / 16 + 30), Color.White);
             if (GameControl.triviaWin)
             {
                 WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Correct", new Vector2((screenWidth - WumpusGame.MotorwerkFont.MeasureString("Correct").X) / 2, 560), Color.White);

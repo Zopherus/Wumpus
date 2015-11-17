@@ -14,11 +14,13 @@ namespace Wumpus
 {
 	public class Player
 	{
+        public const int SpriteSheetHeight = 32;
+        public const int SpriteSheetWidth = 32;
 		public const int rectangleSize = 50;
         public const int Speed = 5;
 		private int turns, gold, arrows, counter, counterHolder, currentRoom;
 		private Rectangle position;
-        private Direction direction = Direction.Down;
+        public Direction Direction { get; private set; }
 
 		//constructors
         public Player(Rectangle rectangle, int arrows, int gold)
@@ -189,7 +191,7 @@ namespace Wumpus
             if (CheckOnScreen(newPosition))
             {
                 position = newPosition;
-                direction = Direction.Up;
+                Direction = Direction.Up;
                 counter++;
             }
             else
@@ -202,7 +204,7 @@ namespace Wumpus
             if (CheckOnScreen(newPosition))
             {
                 position = newPosition;
-                direction = Direction.Right;
+                Direction = Direction.Right;
                 counter++;
             }
             else
@@ -215,7 +217,7 @@ namespace Wumpus
             if (CheckOnScreen(newPosition))
             {
                 position = newPosition;
-                direction = Direction.Down;
+                Direction = Direction.Down;
                 counter++;
             }
             else

@@ -97,7 +97,7 @@ namespace Wumpus
 
         public static void UpdateTrivia() 
         {
-            if (keyboard.IsKeyDown(Keys.A))
+            if (WumpusGame.KeyboardState.IsKeyDown(Keys.A))
             {
                 if (strings[5] == "1")
                 {
@@ -109,7 +109,7 @@ namespace Wumpus
                     GameControl.TriviaIncorrect();
                 }
             }
-            if (keyboard.IsKeyDown(Keys.B))
+            if (WumpusGame.KeyboardState.IsKeyDown(Keys.B))
             {
                 if (strings[5] == "2")
                 {
@@ -121,7 +121,7 @@ namespace Wumpus
                     GameControl.TriviaIncorrect();
                 }
             }
-            if (keyboard.IsKeyDown(Keys.C))
+            if (WumpusGame.KeyboardState.IsKeyDown(Keys.C))
             {
                 if (strings[5] == "3")
                 {
@@ -133,7 +133,7 @@ namespace Wumpus
                     GameControl.TriviaIncorrect();
                 }
             }
-            if (keyboard.IsKeyDown(Keys.D))
+            if (WumpusGame.KeyboardState.IsKeyDown(Keys.D))
             {
                 if (strings[5] == "4")
                 {
@@ -149,17 +149,17 @@ namespace Wumpus
 
         public static void UpdateTriviaLose() 
         {
-            if (mouse.LeftButton == ButtonState.Pressed && oldMouse.LeftButton == ButtonState.Released)
+            if (WumpusGame.MouseState.LeftButton == ButtonState.Pressed && WumpusGame.OldMouseState.LeftButton == ButtonState.Released)
             {
-                GameState = GameState.Cave;
+                WumpusGame.GameState = GameState.Cave;
             }
         }
 
         public static void UpdateTriviaWin() 
         {
-            if (mouse.LeftButton == ButtonState.Pressed && oldMouse.LeftButton == ButtonState.Released)
+            if (WumpusGame.MouseState.LeftButton == ButtonState.Pressed && WumpusGame.OldMouseState.LeftButton == ButtonState.Released)
             {
-                GameState = GameState.Cave;
+                WumpusGame.GameState = GameState.Cave;
             }
         }
     }
