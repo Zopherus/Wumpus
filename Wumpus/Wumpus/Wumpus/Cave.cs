@@ -8,7 +8,7 @@ namespace Wumpus
 {
 	class Cave
 	{
-        /*private static Hexagon[] hexagons = new Hexagon[30];
+        private static Hexagon[] hexagons = new Hexagon[30];
         private static bool[] fill = new bool[30];
         private static void FloodFill(int hexagonNumber)
         {
@@ -184,7 +184,7 @@ namespace Wumpus
 			while (!test);	
             Shuffle(hexagons);
         }
-        */
+        
 		private List <int[]> caveMatrix = new List<int[]>();
 		public static List<Room> Matrix = new List<Room>();
 		private int[][] caveConn = new int[][]
@@ -192,7 +192,7 @@ namespace Wumpus
 			//inner array is the actual room number
 			//outer arrays or the {x,x,x} is the connected rooms
 
-			new int[] {2, 7, 6},//1 
+			/*new int[] {2, 7, 6},//1 
 			new int[] { 26, 7, 9},//2
 			new int[] { 28, 9, 26},//3
 			new int[] { 27, 9, 4}, //4
@@ -221,14 +221,14 @@ namespace Wumpus
 			new int[] { 3, 22, 20}, //27
 			new int[] {3, 4, 5}, //28
 			new int[] {22, 23, 24}, //29
-			new int[] {1, 25, 5}, //30
+			new int[] {1, 25, 5}, //30*/
 		};
 		private int[][] caveAdj = new int[][]
 		{
 			//inner array is the actual room number
 			//outer arrays or the {x,x,x,x,x,x} is the connected rooms
 
-			new int[] {2, 7, 6,25,26,30},//1
+			/*new int[] {2, 7, 6,25,26,30},//1
 			new int[] { 26, 7, 9,1,8,3},//2
 			new int[] { 2,9,4,28,27,26},//3
 			new int[] { 3,9,10,11,5,28}, //4
@@ -257,7 +257,7 @@ namespace Wumpus
 			new int[] { 20,21,23,26,3,28}, //27
 			new int[] {27,22,29,3,4,5}, //28
 			new int[] {22,23,24,28,5,30}, //29
-			new int[] {29,24,25,5,6,1}, //30
+			new int[] {29,24,25,5,6,1}, //30*/
 		};
 
 
@@ -266,9 +266,9 @@ namespace Wumpus
 			for (int i = 0; i < 30; i++)
 			{
 				Room newRoom = new Room();
-				newRoom.AdjRoom = caveAdj[i];
+				newRoom.AdjRooms = caveAdj[i];
 				newRoom.ConnectedRooms = caveConn[i];
-				newRoom.CurrentRoom = i+1;
+				newRoom.RoomNumber = i+1;
 				Matrix.Add(newRoom);
 			}
 		}
@@ -278,25 +278,27 @@ namespace Wumpus
 			return Matrix[currentRoom];
 		}
 
-		public int[] getConnectedRooms(int currentRoom)
+		public bool[] getConnectedRooms(int currentRoom)
 		{
 			return Matrix[currentRoom].ConnectedRooms;
 		}
+
 		public int[] getAdjRooms(int currentRoom)
 		{
 			if (currentRoom == 1) 
 			{
-				return Matrix[0].AdjRoom;
+				return Matrix[0].AdjRooms;
 			}
 			else if (currentRoom > 1 && currentRoom <= 29)
 			{
-				return Matrix[currentRoom - 1].AdjRoom;
+				return Matrix[currentRoom - 1].AdjRooms;
 			}
 			else
 			{
-				return Matrix[29].AdjRoom;
+				return Matrix[29].AdjRooms;
 			}
 		}
+
 		public int[][] getMap()
 		{
 			int[][] Map = {  new int[] {1, 2, 3, 4,5,6},

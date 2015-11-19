@@ -102,8 +102,6 @@ C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Spritefonts\SmallSpriteFont.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Text Files\HighScores.txt
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Text Files\TriviaList.txt
-C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\MapHexagon.fw.xnb
-C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\black.fw.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\MoneyCurrency.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Osama.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Bush.xnb
@@ -112,13 +110,6 @@ C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Conten
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\ground.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Bullets.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\death.xnb
-C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\untitled.xnb
-C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\untitled1.xnb
-C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\untitled2.xnb
-C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\untitled3.xnb
-C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\untitled4.xnb
-C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\untitled5.xnb
-C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\untitled6.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Red.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HUD.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\OilSpill.xnb
@@ -126,8 +117,6 @@ C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Conten
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Map.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Wallpaper.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\White.xnb
-C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Spritefonts\SpriteFont1.xnb
-C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Spritefonts\SmallSpriteFont.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Text Files\HighScores.txt
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Text Files\TriviaList.txt
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Wumpus.exe
@@ -170,3 +159,14 @@ C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Text 
 C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Wumpus.exe
 C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Wumpus.pdb
 C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\obj\x86\Debug\Wumpus.pdb
+C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\MapHexagon.xnb
+C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Black.xnb
+C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\DefaultBoundary.xnb
+C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\TopBoundary.xnb
+C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\TopRightBoundary.xnb
+C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\BottomRightBoundary.xnb
+C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\BottomBoundary.xnb
+C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\BottomLeftBoundary.xnb
+C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\TopLeftBoundary.xnb
+C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Spritefonts\SmallMotorwerkFont.xnb
+C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Spritefonts\MotorwerkFont.xnb

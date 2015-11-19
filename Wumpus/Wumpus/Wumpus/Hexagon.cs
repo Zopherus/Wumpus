@@ -14,10 +14,6 @@ namespace Wumpus
 	public class Hexagon
 	{
 		public int number;
-		public int width;
-		public int left;
-		public int top;
-		public int height;
         //Binary form of this number describes which doors are open
         //Top door is 1 and rotates clockwise
         public int doors;
@@ -30,11 +26,6 @@ namespace Wumpus
 		}
 		public Hexagon( int num, int lef, int to, int wid, int heigh)
 		{
-			number = num;
-			width = wid;
-			left = lef;
-			top = to;
-			height = heigh;
 		}
 
         public static int DoorTop(int hexagonNumber)

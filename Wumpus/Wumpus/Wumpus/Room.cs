@@ -8,24 +8,19 @@ namespace Wumpus
 {
 	class Room
 	{
-		private int[] adjRooms;
-		private int[] connectedRooms;
-		private int currentRoom;
+        //first index is top room, goes clockwise
+		public int[] AdjRooms { get; private set; }
 
-		public int[] AdjRoom
-		{
-			get { return adjRooms; }
-			set { adjRooms = value; }
-		}
-		public int[] ConnectedRooms
-		{
-			get { return connectedRooms; }
-			set { connectedRooms = value; }
-		}
-		public int CurrentRoom
-		{
-			get { return currentRoom; }
-			set { currentRoom = value; }
-		}
+        //is true if that room in that position is connected to this room
+        public bool[] ConnectedRooms { get; private set; }
+
+        //room number
+        public int RoomNumber { get; private set; }
+
+        public Room()
+        {
+            AdjRooms = new int[6];
+            ConnectedRooms = new bool[6];
+        }
 	}
 }

@@ -104,7 +104,7 @@ namespace Wumpus
 		public int calculateScore()
 		{
 			return 100 - this.turns + this.gold + (this.arrows * 10);
-		}s
+		}
 
 		//checks if position is within hexagon
 		private bool CheckOnScreen(Rectangle position)

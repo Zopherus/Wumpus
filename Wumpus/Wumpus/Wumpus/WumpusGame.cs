@@ -27,15 +27,12 @@ namespace Wumpus
 		
 		public static string[] TriviaQuestions = new String[5];
 
-        bool value = false;
-        int time = 0;
-        int triviaWinCounter = 0;
-
         public static GameState GameState;
 		//Only used when in the Trivia GameState
 		public static TriviaState TriviaState;
 
-        public static Texture2D HexagonTexture { get; private set;  }
+        public static Texture2D 
+            Texture { get; private set;  }
         public static Texture2D BlackTexture{ get; private set;  }
         public static Texture2D WhiteTexture{ get; private set;  }
         public static Texture2D MoneyCurrencyTexture { get; private set;  }
