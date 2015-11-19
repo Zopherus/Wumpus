@@ -30,10 +30,7 @@ namespace Wumpus
                     switch (i)
                     {
                         case 1:
-                            if (
-                                
-                                
-                                .DoorTop(GameControl.Player.CurrentRoom) == number)
+                            if (Hexagon.DoorTop(GameControl.Player.CurrentRoom) == number)
                                 value = true;
                             break;
                         case 2:

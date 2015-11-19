@@ -88,8 +88,8 @@
     <Compile Include="WumpusGame.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="Score.cs" />
-    <Compile Include="Trivia2.0.cs" />
-    <Compile Include="TriviaList2.0.cs" />
+    <Compile Include="Trivia.cs" />
+    <Compile Include="TriviaList.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GameThumbnail.png">
