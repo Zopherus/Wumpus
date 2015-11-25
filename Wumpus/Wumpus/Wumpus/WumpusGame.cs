@@ -33,20 +33,21 @@ namespace Wumpus
 
         public static Texture2D 
             Texture { get; private set;  }
-        public static Texture2D BlackTexture{ get; private set;  }
-        public static Texture2D WhiteTexture{ get; private set;  }
+        public static Texture2D BlackTexture { get; private set;  }
+        public static Texture2D WhiteTexture { get; private set;  }
         public static Texture2D MoneyCurrencyTexture { get; private set;  }
-        public static Texture2D BushTexture{ get; private set;  }
-        public static Texture2D OsamaTexture{ get; private set;  }
-        public static Texture2D GroundTexture{ get; private set;  }
-        public static Texture2D HelicopterTexture{ get; private set;  }
-        public static Texture2D WallpaperTexture{ get; private set;  }
-        public static Texture2D BottomHUDTexture{ get; private set;  }
-        public static Texture2D OilSpillTexture{ get; private set;  }
-        public static Texture2D ShopBackgroundTexture{ get; private set;  }
-        public static Texture2D BulletsTexture{ get; private set;  }
-        public static Texture2D MapTexture{ get; private set;  }
-        public static Texture2D DeathTexture{ get; private set;  }
+        public static Texture2D BushTexture { get; private set;  }
+        public static Texture2D OsamaTexture { get; private set;  }
+        public static Texture2D GroundTexture { get; private set;  }
+        public static Texture2D HelicopterTexture { get; private set;  }
+        public static Texture2D WallpaperTexture { get; private set;  }
+        public static Texture2D BottomHUDTexture { get; private set;  }
+        public static Texture2D OilSpillTexture { get; private set;  }
+        public static Texture2D ShopBackgroundTexture { get; private set;  }
+        public static Texture2D BulletsTexture { get; private set;  }
+        public static Texture2D MapTexture { get; private set;  }
+        public static Texture2D DeathTexture { get; private set;  }
+        public static Texture2D DefaultRoomBoundary { get; private set; }
         public static List<Texture2D> TreeBoundaryTextures = new List<Texture2D>();
 
         public static KeyboardState KeyboardState { get; private set; }
@@ -83,13 +84,13 @@ namespace Wumpus
 		/// and initialize them as well.
 		/// </summary>
 		/// 
-
+        
 		protected override void Initialize()
 		{
 			// TODO: Add your initialization logic here
 
-            //Cave.GenerateCave();
-
+            Cave.InitializeMap();
+            Player.CurrentRoom = Cave.Rooms[0];
             GameControl.Initialize();
 			base.Initialize();
 		}
@@ -102,7 +103,6 @@ namespace Wumpus
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
 			SpriteBatch = new SpriteBatch(GraphicsDevice);
-			HexagonTexture = Content.Load<Texture2D>("Sprites/MapHexagon");
 			MotorwerkFont = Content.Load<SpriteFont>("Spritefonts/MotorwerkFont");
             SmallMotorwerkFont = Content.Load<SpriteFont>("Spritefonts/SmallMotorwerkFont");
 			BlackTexture = Content.Load<Texture2D>("Sprites/Black");
@@ -119,7 +119,7 @@ namespace Wumpus
             BulletsTexture = Content.Load<Texture2D>("Sprites/Bullets");
             MapTexture = Content.Load<Texture2D>("Sprites/Map");
             DeathTexture = Content.Load<Texture2D>("Sprites/Death");
-            TreeBoundaryTextures.Add(Content.Load<Texture2D>("Sprites/HexagonTreeBoundaries/DefaultBoundary"));
+            DefaultRoomBoundary = Content.Load<Texture2D>("Sprites/HexagonTreeBoundaries/DefaultBoundary");
             TreeBoundaryTextures.Add(Content.Load<Texture2D>("Sprites/HexagonTreeBoundaries/TopBoundary"));
             TreeBoundaryTextures.Add(Content.Load<Texture2D>("Sprites/HexagonTreeBoundaries/TopRightBoundary"));
             TreeBoundaryTextures.Add(Content.Load<Texture2D>("Sprites/HexagonTreeBoundaries/BottomRightBoundary"));

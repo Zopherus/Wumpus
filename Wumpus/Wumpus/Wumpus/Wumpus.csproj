@@ -77,7 +77,6 @@
     <Compile Include="DrawStates.cs" />
     <Compile Include="GameControl.cs" />
     <Compile Include="Helicopter.cs" />
-    <Compile Include="Hexagon.cs" />
     <Compile Include="Highscore.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Menu.cs" />

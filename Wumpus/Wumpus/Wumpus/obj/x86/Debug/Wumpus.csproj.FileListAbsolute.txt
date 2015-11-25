@@ -159,7 +159,6 @@ C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Text 
 C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Wumpus.exe
 C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Wumpus.pdb
 C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\obj\x86\Debug\Wumpus.pdb
-C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\MapHexagon.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Black.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\DefaultBoundary.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\TopBoundary.xnb

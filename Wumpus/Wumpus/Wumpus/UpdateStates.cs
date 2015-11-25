@@ -47,7 +47,7 @@ namespace Wumpus
             {
                 WumpusGame.Player.MoveDown();
             }
-			if (GameControl.GameMap.Helicopter1 == GameControl.Player.CurrentRoom || GameControl.GameMap.Helicopter2 == GameControl.Player.CurrentRoom)
+			/*if (GameControl.GameMap.Helicopter1 == GameControl.Player.CurrentRoom || GameControl.GameMap.Helicopter2 == GameControl.Player.CurrentRoom)
 			{
 				//When first enter helicopter room
 				if (!IsInHelicopterRoom)
@@ -89,7 +89,7 @@ namespace Wumpus
 						WumpusGame.GameState = GameState.Lose;
 					}
 				}
-			}
+			}*/
         }
 
         public static void UpdateHelp() 

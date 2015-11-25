@@ -18,7 +18,8 @@ namespace Wumpus
         public const int SpriteSheetWidth = 32;
 		public const int rectangleSize = 50;
         public const int Speed = 5;
-		private int turns, gold, arrows, counter, counterHolder, currentRoom;
+        private int turns, gold, arrows, counter, counterHolder;
+        private Room currentRoom;
 		private Rectangle position;
         public Direction Direction { get; private set; }
 
@@ -48,10 +49,10 @@ namespace Wumpus
             set { arrows = value; }
         }
 
-        public int CurrentRoom
+        public Room CurrentRoom
         {
             get { return currentRoom; }
-            set { currentRoom = (value > 0 && value < 31) ? value : currentRoom; }
+            set { currentRoom = value; }
         }
 
 		//when tries to set the position
@@ -109,28 +110,27 @@ namespace Wumpus
 		//checks if position is within hexagon
 		private bool CheckOnScreen(Rectangle position)
 		{
-            int[] AdjRooms = Cave.Matrix[currentRoom-1].ConnectedRooms;
-            if (AdjRooms.Contains<int>(Hexagon.DoorTop(GameControl.Player.CurrentRoom)) && position.Y < 75)
+            if (currentRoom.ConnectedRooms[0] && position.Y < 75)
             {
                 return false;
             }
-            else if (AdjRooms.Contains<int>(Hexagon.DoorTopRight(GameControl.Player.CurrentRoom)) && (Position.Y < 2*Position.X - 790))
+            else if (currentRoom.ConnectedRooms[1] && (Position.Y < 2 * Position.X - 790))
             {
                 return false;
             }
-            else if (AdjRooms.Contains<int>(Hexagon.DoorBottomRight(GameControl.Player.CurrentRoom)) && (Position.Y > -1.5*Position.X + 925))
+            else if (currentRoom.ConnectedRooms[2] && (Position.Y > -1.5 * Position.X + 925))
             {
                 return false;
             }
-            else if (AdjRooms.Contains<int>(Hexagon.DoorBottom(GameControl.Player.CurrentRoom)) && position.Y > 285)
+            else if (currentRoom.ConnectedRooms[3] && position.Y > 285)
             {
                 return false;
             }
-            else if (AdjRooms.Contains<int>(Hexagon.DoorBottomLeft(GameControl.Player.CurrentRoom))&& (Position.Y > 1.5*Position.X -190))
+            else if (currentRoom.ConnectedRooms[4] && (Position.Y > 1.5 * Position.X - 190))
             {
                 return false;
             }
-            else if (AdjRooms.Contains<int>(Hexagon.DoorTopLeft(GameControl.Player.CurrentRoom)) && (Position.Y < -2*Position.X + 750))
+            else if (currentRoom.ConnectedRooms[5] && (Position.Y < -2 * Position.X + 750))
             {
                 return false;
             }
@@ -140,47 +140,46 @@ namespace Wumpus
 
         public void checkRoomChange()
         {
-            int[] AdjRooms = Cave.Matrix[currentRoom-1].ConnectedRooms;
-            if (AdjRooms.Contains<int>(Hexagon.DoorTop(GameControl.Player.CurrentRoom)) && position.Y < 20)
+            if (currentRoom.ConnectedRooms[0] && position.Y < 20)
             {
                 gold++;
                 turns++;
-                currentRoom = Hexagon.DoorTop(currentRoom);
+                currentRoom = currentRoom.AdjRooms[0];
                 resetPosition();
             }
-            if (AdjRooms.Contains<int>(Hexagon.DoorBottom(GameControl.Player.CurrentRoom)) && position.Y > 340)
+            if (currentRoom.ConnectedRooms[3] && position.Y > 340)
             {
                 gold++;
                 turns++;
-                currentRoom = Hexagon.DoorBottom(currentRoom);
+                currentRoom = currentRoom.AdjRooms[3];
                 resetPosition();
             }
-            if (AdjRooms.Contains<int>(Hexagon.DoorTopRight(GameControl.Player.CurrentRoom)) && (Position.Y < 2 *Position.X - 900))
+            if (currentRoom.ConnectedRooms[1] && (Position.Y < 2 * Position.X - 900))
             {
                 gold++;
                 turns++;
-                currentRoom = Hexagon.DoorTopRight(currentRoom);
+                currentRoom = currentRoom.AdjRooms[1];
                 resetPosition();
             }
-            if (AdjRooms.Contains<int>(Hexagon.DoorBottomRight(GameControl.Player.CurrentRoom)) && (Position.Y > -1.5*Position.X + 1000))
+            if (currentRoom.ConnectedRooms[2] && (Position.Y > -1.5 * Position.X + 1000))
             {
                 gold++;
                 turns++;
-                currentRoom = Hexagon.DoorBottomRight(currentRoom);
+                currentRoom = currentRoom.AdjRooms[2];
                 resetPosition();
             }
-            if (AdjRooms.Contains<int>(Hexagon.DoorTopLeft(GameControl.Player.CurrentRoom)) && (Position.Y < -2 * Position.X + 600))
+            if (currentRoom.ConnectedRooms[5] && (Position.Y < -2 * Position.X + 600))
             {
                 gold++;
                 turns++;
-                currentRoom = Hexagon.DoorTopLeft(currentRoom);
+                currentRoom = currentRoom.AdjRooms[5];
                 resetPosition();
             }
-            if (AdjRooms.Contains<int>(Hexagon.DoorBottomLeft(GameControl.Player.CurrentRoom)) && (Position.Y > 1.5 * Position.X - 50))
+            if (currentRoom.ConnectedRooms[4] && (Position.Y > 1.5 * Position.X - 50))
             {
                 gold++;
                 turns++;
-                currentRoom = Hexagon.DoorBottomRight(currentRoom);
+                currentRoom = currentRoom.AdjRooms[4];
                 resetPosition();
             }
         }

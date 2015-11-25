@@ -4,311 +4,162 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Microsoft.Xna.Framework;
+
 namespace Wumpus
 {
-	class Cave
-	{
-        private static Hexagon[] hexagons = new Hexagon[30];
-        private static bool[] fill = new bool[30];
-        private static void FloodFill(int hexagonNumber)
+    class Cave
+    {
+        public const int numRows = 5;
+        public const int numColumns = 6;
+        public static Room[] Rooms = new Room[30];
+        private static Random random = new Random();
+
+        //Given the position of a room, these are the changes in position for the rooms adjacent to the room
+        //Different values are needed if in even or odd column
+        //First array is for even columns, second array for odd columns
+        //Within each array, starts at room above and moves clockwise
+        private static Point[,] directions = {{ new Point(0, -1), new Point(1, -1), new Point(1, 0),
+                                            new Point(0, 1), new Point(-1, 0), new Point(-1, -1)},
+                                            {new Point(0, -1), new Point(1, 0), new Point(1, -1),
+                                            new Point(0, 1), new Point(-1, 1), new Point(-1, 0)}};
+
+        public static void InitializeMap()
         {
-            if (fill[hexagonNumber])
-                return;
-            else
+            do
             {
-                fill[hexagonNumber] = true;
-                string binary = Convert.ToString(hexagons[hexagonNumber].doors, 2);
-                int binaryLength = binary.Length;
-                for (int counter = 0; counter < 6 - binaryLength; counter++)
+                //Initialize the room objects with numbers and positions
+                for (int counter = 0; counter < Rooms.Length; counter++)
                 {
-                    binary = "0" + binary;
+                    Point position = new Point(counter % numColumns, counter % numRows);
+                    Room room = new Room(counter, position);
+                    Rooms[counter] = room;
                 }
-                for (int counter = 0; counter < 6; counter++)
+                //Initialize the adjacent and connected rooms
+                for (int counter = 0; counter < Rooms.Length; counter++)
                 {
-                    if (binary[counter] == '1')
-                    {
-                        switch (5 - counter)
-                        {
-                            case 0:
-                                FloodFill(hexagons[hexagonNumber].DoorTop());
-                                break;
-                            case 1:
-                                FloodFill(hexagons[hexagonNumber].DoorTopRight());
-                                break;
-                            case 2:
-                                FloodFill(hexagons[hexagonNumber].DoorBottomRight());
-                                break;
-                            case 3:
-                                FloodFill(hexagons[hexagonNumber].DoorBottom());
-                                break;
-                            case 4:
-                                FloodFill(hexagons[hexagonNumber].DoorBottomLeft());
-                                break;
-                            case 5:
-                                FloodFill(hexagons[hexagonNumber].DoorTopLeft());
-                                break;
-                        }
-                    }
+                    InitializeAdjacentRooms(Rooms[counter]);
+                    ChooseConnectedRooms(Rooms[counter]);
+                }
+                RandomizeRoomNumbers();
+            }
+            while (!CheckMap());
+        }
+
+        private static void RandomizeRoomNumbers()
+        {
+            //create an array with ints 0 through how many rooms there are
+            int[] roomNumbers = Enumerable.Range(0, Rooms.Length).ToArray();
+            
+            //randomize the array
+            int position = roomNumbers.Length;
+            while (position > 1)
+            {
+                //creates a random int from 0 to position, not including position to swap to
+                //decreases position by 1
+                int swapPosition = random.Next(position--);
+                int temp = roomNumbers[position];
+                roomNumbers[position] = roomNumbers[swapPosition];
+                roomNumbers[swapPosition] = temp;
+            }
+
+            //set the room numbers of the room equal to the randomized array
+            for (int counter = 0; counter < Rooms.Length; counter++)
+            {
+                Rooms[counter].RoomNumber = roomNumbers[counter];
+            }
+        }
+
+        private static void InitializeAdjacentRooms(Room room)
+        {
+            //even or odd column
+            int columnParity = room.Position.X % 2;
+            for (int counter = 0; counter < room.AdjRooms.Length; counter++)
+            {
+                room.AdjRooms[counter] = FindRoom(new Point(room.Position.X + directions[columnParity, counter].X,
+                                                    room.Position.Y + directions[columnParity, counter].Y));
+            }
+        }
+
+        //returns the room with the position in the Rooms array
+        private static Room FindRoom(Point position)
+        {
+            //Since the map wraps around on itself, use mod to restrict to correct range
+            position.X = mod(position.X, numColumns);
+            position.Y = mod(position.Y, numRows);
+            foreach (Room room in Rooms)
+            {
+                if (room != null && room.Position.X == position.X && room.Position.Y == position.Y)
+                    return room;
+            }
+            return null;
+        }
+
+        private static void ChooseConnectedRooms(Room room)
+        {
+            //OTHER ROOMS CAN ADD PATHWAYS ONTO THIS ROOM TO MAKE THE NUMBER OF PATHS GO OVER 3 CAUSING IN AN ERROR
+            //INFINITE LOOP IF EVERY ROOM AROUND THIS ROOM ALREADY HAS 3 PATHWAYS
+            int numberConnectedRooms = room.ConnectedRooms.Count(c => c);
+            int minToAdd = 0;
+            if (numberConnectedRooms == 0)
+                minToAdd = 1;
+            //Ensure that the room cannot have more than 3 paths and at least one path
+            int numberPathsToAdd = random.Next(minToAdd, 4 - numberConnectedRooms);
+            //Use while loop to add that many number of paths
+            int counter = 0;
+            while (counter < numberPathsToAdd)
+            {
+                //The position that the hallway will try to be put
+                int number = random.Next(0, room.ConnectedRooms.Length);
+
+                //The number of paths that the adjacent room has, has to be kept at or below 3
+                int numberConnectedRoomsAdjRoom = room.AdjRooms[number].ConnectedRooms.Count(c => c);
+                //Only works if there is not already a path there and that adjacent room has less than 3 paths
+                if (!room.ConnectedRooms[number] && numberConnectedRoomsAdjRoom < 3)
+                {
+                    room.ConnectedRooms[number] = true;
+
+                    //Open the pathway in the adjacent room 
+                    //0 corresponds with 3, 1 with 4, and 2 with 5
+                    room.AdjRooms[number].ConnectedRooms[(number + 3) % 6] = true;
+
+                    //only increase counter if success is found
+                    counter++;
                 }
             }
         }
 
-        private static void CreateCave()
+        public static bool CheckMap()
         {
-            Random rnd = new Random();
-            foreach (Hexagon hexagon in hexagons)
+            //True if that room has been visited, false otherwise
+            bool[] VisitedRooms = new bool[Rooms.Length];
+            FloodFill(VisitedRooms, Rooms[0]);
+            foreach (bool value in VisitedRooms)
             {
-                string binary = Convert.ToString(hexagon.doors, 2);
-                int binaryLength = binary.Length;
-                for (int counter = 0; counter < 6 - binaryLength; counter++)
+                if (!value)
+                    return false;
+            }
+            return true;
+        }
+
+
+        public static void FloodFill(bool[] VisitedRooms, Room room)
+        {
+            VisitedRooms[room.RoomNumber] = true;
+            for (int counter = 0; counter < room.ConnectedRooms.Length; counter++)
+            {
+                //If room is connected in that direction and that room has not yet been visited
+                if (room.ConnectedRooms[counter] && !VisitedRooms[room.AdjRooms[counter].RoomNumber])
                 {
-                    binary = "0" + binary;
-                }
-                if (hexagon.numberDoors >= 3)
-                    continue;
-                int numberDoors = 0;
-                if (hexagon.numberDoors == 0)
-                { numberDoors = rnd.Next(1, 4); }
-                else
-                { numberDoors = rnd.Next(0, 4 - hexagon.numberDoors); }
-                for (int counter = 0; counter < numberDoors; counter++)
-                {
-                    int door = rnd.Next(0, 6);
-                    if (binary[5 - door] == '0')
-                    {
-                        hexagon.doors += (int)Math.Pow(2, door);
-                        hexagon.numberDoors++;
-                        switch (door)
-                        {
-                            case 0:
-                                if (hexagons[hexagon.DoorTop()].numberDoors == 3 || Convert.ToString(hexagons[hexagon.DoorTop()].doors, 2)[5 - door] == '1')
-                                {
-                                    continue;
-                                }
-                                else
-                                {
-                                    hexagons[hexagon.DoorTop()].numberDoors++;
-                                    hexagons[hexagon.DoorTop()].doors += 8;
-                                }
-                                break;
-                            case 1:
-                                if (hexagons[hexagon.DoorTopRight()].numberDoors == 3 || Convert.ToString(hexagons[hexagon.DoorTopRight()].doors, 2)[5 - door] == '1')
-                                {
-                                    continue;
-                                }
-                                else
-                                {
-                                    hexagons[hexagon.DoorTopRight()].numberDoors++;
-                                    hexagons[hexagon.DoorTopRight()].doors += 16;
-                                }
-                                break;
-                            case 2:
-                                if (hexagons[hexagon.DoorBottomRight()].numberDoors == 3 || (int)Convert.ToString(hexagons[hexagon.DoorBottomRight()].doors, 2)[5 - door] == '1')
-                                {
-                                    continue;
-                                }
-                                else
-                                {
-                                    hexagons[hexagon.DoorBottomRight()].numberDoors++;
-                                    hexagons[hexagon.DoorBottomRight()].doors += 32;
-                                }
-                                break;
-                            case 3:
-                                if (hexagons[hexagon.DoorBottom()].numberDoors == 3 || Convert.ToString(hexagons[hexagon.DoorBottom()].doors, 2)[5 - door] == '1')
-                                {
-                                    continue;
-                                }
-                                else
-                                {
-                                    hexagons[hexagon.DoorBottom()].numberDoors++;
-                                    hexagons[hexagon.DoorBottom()].doors += 1;
-                                }
-                                break;
-                            case 4:
-                                if (hexagons[hexagon.DoorBottomLeft()].numberDoors == 3 || Convert.ToString(hexagons[hexagon.DoorBottomLeft()].doors, 2)[5 - door] == '1')
-                                {
-                                    continue;
-                                }
-                                else
-                                {
-                                    hexagons[hexagon.DoorBottomLeft()].numberDoors++;
-                                    hexagons[hexagon.DoorBottomLeft()].doors += 2;
-                                }
-                                break;
-                            case 5:
-                                if (hexagons[hexagon.DoorTopLeft()].numberDoors == 3 || Convert.ToString(hexagons[hexagon.DoorTopLeft()].doors, 2)[5 - door] == '1')
-                                {
-                                    continue;
-                                }
-                                else
-                                {
-                                    hexagons[hexagon.DoorTopLeft()].numberDoors++;
-                                    hexagons[hexagon.DoorTopLeft()].doors += 4;
-                                }
-                                break;
-                        }
-                    }
+                    FloodFill(VisitedRooms, room.AdjRooms[counter]);
                 }
             }
         }
 
-        private static void Shuffle(Hexagon[] array)
+        //returns the mod of x in base m, % is the remainder function not mod function
+        private static int mod(int number, int mod)
         {
-            int n = array.Length;
-            Random random = new Random();
-            for (int i = 0; i < n; i++)
-            {
-                int r = i + (int)(random.NextDouble() * (n - i));
-                int t = array[r].number;
-                array[r] = array[i];
-                array[i].number = t;
-            }
+            return (number % mod + mod) % mod;
         }
-        public static void GenerateCave()
-        {
-            bool test = true;
-            for (int counter = 0; counter < 30; counter++)
-			{
-				hexagons[counter] = new Hexagon(counter);
-			}
-			do
-			{
-				CreateCave();
-				FloodFill(0);
-				foreach (bool value in fill)
-				{
-					if (!value)
-						test = false;
-				}
-			}
-			while (!test);	
-            Shuffle(hexagons);
-        }
-        
-		private List <int[]> caveMatrix = new List<int[]>();
-		public static List<Room> Matrix = new List<Room>();
-		private int[][] caveConn = new int[][]
-		{
-			//inner array is the actual room number
-			//outer arrays or the {x,x,x} is the connected rooms
-
-			/*new int[] {2, 7, 6},//1 
-			new int[] { 26, 7, 9},//2
-			new int[] { 28, 9, 26},//3
-			new int[] { 27, 9, 4}, //4
-			new int[] { 11, 30, 29}, //5
-			new int[] { 7, 11, 12}, //6
-			new int[] { 1, 2, 8}, //7
-			new int[] { 15, 2, 9}, //8
-			new int[] { 3, 9, 17}, //9
-			new int[] { 17, 11, 4}, //10
-			new int[] { 6, 5, 17}, //11
-			new int[] {18, 13, 6}, //12
-			new int[] {19, 18, 14}, //13
-			new int[] {8, 20, 21}, //14
-			new int[] {29, 8, 10}, //15
-			new int[] {23, 10, 21}, //16
-			new int[] { 23, 11, 10}, //17
-			new int[] {24, 12, 19}, //18
-			new int[] {25, 14, 18}, //19
-			new int[] {25, 26, 27},//20
-			new int[] { 27, 20, 14}, //21
-			new int[] {29, 21, 23}, //22
-			new int[] {29, 18, 16}, //23
-			new int[] {30, 25, 19}, //24
-			new int[] {30, 1, 26}, //25
-			new int[] {1, 2, 27}, //26
-			new int[] { 3, 22, 20}, //27
-			new int[] {3, 4, 5}, //28
-			new int[] {22, 23, 24}, //29
-			new int[] {1, 25, 5}, //30*/
-		};
-		private int[][] caveAdj = new int[][]
-		{
-			//inner array is the actual room number
-			//outer arrays or the {x,x,x,x,x,x} is the connected rooms
-
-			/*new int[] {2, 7, 6,25,26,30},//1
-			new int[] { 26, 7, 9,1,8,3},//2
-			new int[] { 2,9,4,28,27,26},//3
-			new int[] { 3,9,10,11,5,28}, //4
-			new int[] { 11, 30, 29,28,4,6}, //5
-			new int[] { 1,7,12,11,5,30}, //6
-			new int[] { 1,2,8,12,13,6}, //7
-			new int[] { 13,14,15,2,7,9}, //8
-			new int[] { 2,3,4,10,8,15}, //9
-			new int[] { 9,4,11,15,16,16}, //10
-			new int[] { 4,5,6,10,12,17}, //11
-			new int[] {11,6,7,13,17,18}, //12
-			new int[] {12,7,8,14,18,19}, //13
-			new int[] {13,8,15,19,20,21}, //14
-			new int[] {8,9,10,14,21,16}, //15
-			new int[] {15,10,17,21,22,23}, //16
-			new int[] { 10,11,12,16,23,18}, //17
-			new int[] { 17,12,13,23,24,19}, //18
-			new int[] {18,12,14,24,25,20}, //19
-			new int[] {19,14,21,25,26,27},//20
-			new int[] {14,15,16,20,22,27}, //21
-			new int[] {21,16,23,27,28,29}, //22
-			new int[] {16,17,18,22,29,24}, //23
-			new int[] {13,18,19,29,30,25}, //24
-			new int[] {24,19,20,30,1,26}, //25
-			new int[] {1,2,3,25,20,27}, //26
-			new int[] { 20,21,23,26,3,28}, //27
-			new int[] {27,22,29,3,4,5}, //28
-			new int[] {22,23,24,28,5,30}, //29
-			new int[] {29,24,25,5,6,1}, //30*/
-		};
-
-
-		public Cave()
-		{
-			for (int i = 0; i < 30; i++)
-			{
-				Room newRoom = new Room();
-				newRoom.AdjRooms = caveAdj[i];
-				newRoom.ConnectedRooms = caveConn[i];
-				newRoom.RoomNumber = i+1;
-				Matrix.Add(newRoom);
-			}
-		}
-
-		public Room getCurrentRoom(int currentRoom)
-		{
-			return Matrix[currentRoom];
-		}
-
-		public bool[] getConnectedRooms(int currentRoom)
-		{
-			return Matrix[currentRoom].ConnectedRooms;
-		}
-
-		public int[] getAdjRooms(int currentRoom)
-		{
-			if (currentRoom == 1) 
-			{
-				return Matrix[0].AdjRooms;
-			}
-			else if (currentRoom > 1 && currentRoom <= 29)
-			{
-				return Matrix[currentRoom - 1].AdjRooms;
-			}
-			else
-			{
-				return Matrix[29].AdjRooms;
-			}
-		}
-
-		public int[][] getMap()
-		{
-			int[][] Map = {  new int[] {1, 2, 3, 4,5,6},
-							 new int[] {7,8,9,10,11,12},
-							 new int[]{13,14,15,16,17,18},
-							 new int[]{19,20,21,22,23,24}, 
-							 new int[]{25,26,27,28,29,30},
-													};
-
-			return Map;
-		}
-	}
+    }
 }

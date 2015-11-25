@@ -21,60 +21,25 @@ namespace Wumpus
             WumpusGame.SpriteBatch.Draw(WumpusGame.BushTexture, GameControl.Player.Position, new Rectangle(32 * GameControl.Player.CounterHolder, Player.SpriteSheetHeight * (int)WumpusGame.Player.Direction, Player.SpriteSheetWidth, Player.SpriteSheetHeight), Color.White);
             WumpusGame.SpriteBatch.Draw(WumpusGame.MoneyCurrencyTexture, new Rectangle(675, 445, 100, 100), Color.White);
             WumpusGame.SpriteBatch.Draw(WumpusGame.BulletsTexture, new Rectangle(675, 500, 100, 100), new Rectangle(0, 0, 45, 41), Color.White);
-            int[] AdjRooms = Cave.Matrix[GameControl.Player.CurrentRoom - 1].ConnectedRooms;
-            for (int i = 0; i < 7; i++)
+            WumpusGame.SpriteBatch.Draw(WumpusGame.DefaultRoomBoundary, new Rectangle(0, 0, 800, 450), Color.White);
+            for (int counter = 0; counter < WumpusGame.Player.CurrentRoom.ConnectedRooms.Length; counter++)
             {
-                bool value = false;
-                foreach (int number in AdjRooms)
-                {
-                    switch (i)
-                    {
-                        case 1:
-                            if (Hexagon.DoorTop(GameControl.Player.CurrentRoom) == number)
-                                value = true;
-                            break;
-                        case 2:
-                            if (Hexagon.DoorTopRight(GameControl.Player.CurrentRoom) == number)
-                                value = true;
-                            break;
-                        case 3:
-                            if (Hexagon.DoorBottomRight(GameControl.Player.CurrentRoom) == number)
-                                value = true;
-                            break;
-                        case 4:
-                            if (Hexagon.DoorBottom(GameControl.Player.CurrentRoom) == number)
-                                value = true;
-                            break;
-                        case 5:
-                            if (Hexagon.DoorBottomLeft(GameControl.Player.CurrentRoom) == number)
-                                value = true;
-                            break;
-                        case 6:
-                            if (Hexagon.DoorTopLeft(GameControl.Player.CurrentRoom) == number)
-                                value = true;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                if (value)
-                    continue;
-                else
-                    WumpusGame.SpriteBatch.Draw(WumpusGame.TreeBoundaryTextures[i], new Rectangle(0, 0, 800, 450), Color.White);
+                if (!WumpusGame.Player.CurrentRoom.ConnectedRooms[counter])
+                    WumpusGame.SpriteBatch.Draw(WumpusGame.TreeBoundaryTextures[counter], new Rectangle(0, 0, 800, 450), Color.White);
             }
             //map button
 			DrawRectangleOutline(new Rectangle(40, 475, 150, 90), WumpusGame.BlackTexture, 1);
 
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Map", new Vector2(115 - (WumpusGame.MotorwerkFont.MeasureString("Map")).X / 2, 520 - (WumpusGame.MotorwerkFont.MeasureString("Map")).Y / 2), Color.Black);
 
-            if (GameControl.GameMap.Helicopter1 == GameControl.Player.CurrentRoom || GameControl.GameMap.Helicopter2 == GameControl.Player.CurrentRoom)
+            /*if (GameControl.GameMap.Helicopter1 == GameControl.Player.CurrentRoom || GameControl.GameMap.Helicopter2 == GameControl.Player.CurrentRoom)
             {
 				WumpusGame.SpriteBatch.Draw(WumpusGame.HelicopterTexture, GameControl.helicopter.Position, GameControl.helicopter.SourceRectangle, Color.White);
             }
             if (GameControl.GameMap.OsamaRoom == GameControl.Player.CurrentRoom)
             {
                 WumpusGame.SpriteBatch.Draw(WumpusGame.OsamaTexture, new Rectangle(375, 200, 50, 50), new Rectangle(0, 0, Player.SpriteSheetWidth, Player.SpriteSheetHeight), Color.White);
-            }
+            }*/
         }
         public static void DrawHelp() 
         {
@@ -89,6 +54,7 @@ namespace Wumpus
 
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Press left to go back to the menu", new Vector2(0, 560), Color.White);
         }
+
         public static void DrawHighscore() 
         {
             WumpusGame.SpriteBatch.Draw(WumpusGame.ShopBackgroundTexture, new Rectangle(0, 0, 800, 600), Color.White);
@@ -101,28 +67,32 @@ namespace Wumpus
             }
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Press left to go back to the menu", new Vector2(0, 560), Color.White);
         }
+
         public static void DrawLose() 
         {
             WumpusGame.SpriteBatch.Draw(WumpusGame.ShopBackgroundTexture, new Rectangle(0, 0, 800, 600), Color.White);
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Lose", new Vector2(400, 0), Color.White);
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Score: " + GameControl.Player.calculateScore().ToString(), new Vector2(350, 0), Color.White);
         }
+
         public static void DrawMap() 
         {
             WumpusGame.SpriteBatch.Draw(WumpusGame.MapTexture, new Rectangle(0, 0, 800, 600), Color.White);
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Current Room: " + GameControl.Player.CurrentRoom.ToString(), new Vector2(0, 0), Color.White);
-            int[][] array = GameControl.GameCave.getMap();
-            for (int i = 0; i < 5; i++)
+
+            Room[] roomArray = Cave.Rooms;
+            for (int y = 0; y < Cave.numRows; y++)
             {
-                foreach (int number in array[i])
+                for (int x = 0; x < Cave.numColumns; x++)
                 {
-                    if (number % 2 == 1)
+                    if (x % 2 == 0)
                     {
-                        WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, number.ToString(), new Vector2(200 + 75 * ((number - 1) % 6), 87 + 88 * i), Color.White);
+                        //Increase the number by one since the rooms are stored as zero-indexed
+                        WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, (roomArray[x + Cave.numRows * y].RoomNumber + 1).ToString(), new Vector2(200 + 75 * x , 87 + 88 * y), Color.White);
                     }
                     else
                     {
-                        WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, number.ToString(), new Vector2(200 + 75 * ((number - 1) % 6), 120 + 88 * i), Color.White);
+                        WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, (roomArray[x + Cave.numRows * y].RoomNumber + 1).ToString(), new Vector2(200 + 75 * x, 120 + 88 * y), Color.White);
                     }
                 }
             }

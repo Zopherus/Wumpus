@@ -26,13 +26,13 @@ namespace Wumpus
         {
 			WumpusGame.GameState = GameState.Menu;
             Player = new Player(new Rectangle(375, 200, Player.rectangleSize, Player.rectangleSize), 3, 0);
-            Player.CurrentRoom = 1;
+            Player.CurrentRoom = Cave.Rooms[0];
         }
 
 		public static string[] newTrivia()
 		{
 			Trivia trivia = triviaList.GetTrivia();
-            string[] result = { trivia.Question, trivia.Answer1, trivia.Answer2, trivia.Answer3, trivia.Answer4, trivia.Answer.ToString() };
+            string[] result = { trivia.Question, trivia.Answer1, trivia.Answer2, trivia.Answer3, trivia.Answer4, trivia.CorrectAnswer.ToString() };
             return result;
 		}
 		public bool shotArrow(int a)
@@ -47,10 +47,10 @@ namespace Wumpus
 				return false;
 			} 
 		}
-		public int[] GetConnectedRooms()
+		/*public int[] GetConnectedRooms()
 		{
 			return GameCave.getConnectedRooms(currentRoom);
-		}
+		}*/
 
 		public int CurrentRoom
 		{
@@ -59,13 +59,13 @@ namespace Wumpus
 		}
 		public static string DisplayHazards()
 		{ 
-			GameMap.AdjRooms = GameCave.getAdjRooms(Player.CurrentRoom);
+			/*GameMap.AdjRooms = GameCave.getAdjRooms(Player.CurrentRoom);
 			GameMap.CheckForHazards();
 			int apache1 = GameMap.Helicopter1;
 			int apache2 = GameMap.Helicopter2;
 			int oil1 = GameMap.OIL1;
 			int oil2 = GameMap.OIL2;
-			int osamaRoom = GameMap.OsamaRoom;
+			int osamaRoom = GameMap.OsamaRoom;*/
 			string hazards = GameMap.Warnings;
 
 			return hazards;
