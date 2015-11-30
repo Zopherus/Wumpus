@@ -100,11 +100,27 @@ namespace Wumpus
             //OTHER ROOMS CAN ADD PATHWAYS ONTO THIS ROOM TO MAKE THE NUMBER OF PATHS GO OVER 3 CAUSING IN AN ERROR
             //INFINITE LOOP IF EVERY ROOM AROUND THIS ROOM ALREADY HAS 3 PATHWAYS
             int numberConnectedRooms = room.ConnectedRooms.Count(c => c);
+
             int minToAdd = 0;
+            //If the room already has a connected path, don't need to add anymore
             if (numberConnectedRooms == 0)
                 minToAdd = 1;
+
+            //Since random.Next is exclusive for upper bound, the max number of paths is 3
+            int maxToAdd = 4;
+            foreach (Room AdjRoom in room.AdjRooms)
+            {
+                //If an adjacent room is already full on paths, decrease the max by one
+                if (AdjRoom.ConnectedRooms.Count(c => c) == 3)
+                    maxToAdd--;
+            }
+
+            //Ensure that the max is greater than or equal to the min
+            maxToAdd = (maxToAdd - numberConnectedRooms > minToAdd) ? maxToAdd - numberConnectedRooms : minToAdd;
+
+
             //Ensure that the room cannot have more than 3 paths and at least one path
-            int numberPathsToAdd = random.Next(minToAdd, 4 - numberConnectedRooms);
+            int numberPathsToAdd = random.Next(minToAdd, maxToAdd);
             //Use while loop to add that many number of paths
             int counter = 0;
             while (counter < numberPathsToAdd)

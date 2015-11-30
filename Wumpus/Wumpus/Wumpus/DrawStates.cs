@@ -11,17 +11,19 @@ namespace Wumpus
     {
         public static void DrawCave() 
         {
-            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, new Point(GameControl.Player.Position.X, GameControl.Player.Position.Y).ToString(), new Vector2(0, 0), Color.Black);
             WumpusGame.SpriteBatch.Draw(WumpusGame.BottomHUDTexture, new Rectangle(0, 450, 800, 150), Color.White);
             WumpusGame.SpriteBatch.Draw(WumpusGame.GroundTexture, new Rectangle(0, 0, 800, 450), Color.White);
-            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, GameControl.DisplayHazards(), new Vector2(0, 420), Color.White);
-            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, GameControl.Player.Gold.ToString(), new Vector2(660 - WumpusGame.MotorwerkFont.MeasureString("0").X * (int)Math.Log10((double)GameControl.Player.Gold + 1), 465), Color.Black);
-            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, GameControl.Player.Arrows.ToString(), new Vector2(660 - WumpusGame.MotorwerkFont.MeasureString("0").X * (int)Math.Log10((double)GameControl.Player.Arrows + 1), 525), Color.Black);
+            //WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, GameControl.DisplayHazards(), new Vector2(0, 420), Color.White);
+            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, WumpusGame.Player.Gold.ToString(), new Vector2(660 - WumpusGame.MotorwerkFont.MeasureString("0").X * (int)Math.Log10((double)WumpusGame.Player.Gold + 1), 465), Color.Black);
+            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, WumpusGame.Player.Arrows.ToString(), new Vector2(660 - WumpusGame.MotorwerkFont.MeasureString("0").X * (int)Math.Log10((double)WumpusGame.Player.Arrows + 1), 525), Color.Black);
             WumpusGame.SpriteBatch.Draw(WumpusGame.BlackTexture, new Rectangle(0, 450, 800, 1), Color.White);
-            WumpusGame.SpriteBatch.Draw(WumpusGame.BushTexture, GameControl.Player.Position, new Rectangle(32 * GameControl.Player.CounterHolder, Player.SpriteSheetHeight * (int)WumpusGame.Player.Direction, Player.SpriteSheetWidth, Player.SpriteSheetHeight), Color.White);
+            WumpusGame.SpriteBatch.Draw(WumpusGame.BushTexture, WumpusGame.Player.Position, new Rectangle(32 * WumpusGame.Player.CharacterFrameCounter, Player.SpriteSheetHeight * (int)WumpusGame.Player.Direction, Player.SpriteSheetWidth, Player.SpriteSheetHeight), Color.White);
             WumpusGame.SpriteBatch.Draw(WumpusGame.MoneyCurrencyTexture, new Rectangle(675, 445, 100, 100), Color.White);
             WumpusGame.SpriteBatch.Draw(WumpusGame.BulletsTexture, new Rectangle(675, 500, 100, 100), new Rectangle(0, 0, 45, 41), Color.White);
             WumpusGame.SpriteBatch.Draw(WumpusGame.DefaultRoomBoundary, new Rectangle(0, 0, 800, 450), Color.White);
+            WumpusGame.SpriteBatch.Draw(WumpusGame.BushTexture, WumpusGame.Player.Position, new Rectangle(32 * WumpusGame.Player.CharacterFrameCounter, Player.SpriteSheetHeight * (int)WumpusGame.Player.Direction, Player.SpriteSheetWidth, Player.SpriteSheetHeight), Color.White);
+            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, new Point(WumpusGame.Player.Position.X, WumpusGame.Player.Position.Y).ToString(), new Vector2(0, 0), Color.Black);
+            //WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, WumpusGame.MouseState.ToString(), new Vector2(0, 0), Color.Black);
             for (int counter = 0; counter < WumpusGame.Player.CurrentRoom.ConnectedRooms.Length; counter++)
             {
                 if (!WumpusGame.Player.CurrentRoom.ConnectedRooms[counter])
@@ -72,13 +74,13 @@ namespace Wumpus
         {
             WumpusGame.SpriteBatch.Draw(WumpusGame.ShopBackgroundTexture, new Rectangle(0, 0, 800, 600), Color.White);
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Lose", new Vector2(400, 0), Color.White);
-            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Score: " + GameControl.Player.calculateScore().ToString(), new Vector2(350, 0), Color.White);
+            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Score: " + WumpusGame.Player.calculateScore().ToString(), new Vector2(350, 0), Color.White);
         }
 
         public static void DrawMap() 
         {
             WumpusGame.SpriteBatch.Draw(WumpusGame.MapTexture, new Rectangle(0, 0, 800, 600), Color.White);
-            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Current Room: " + GameControl.Player.CurrentRoom.ToString(), new Vector2(0, 0), Color.White);
+            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Current Room: " + WumpusGame.Player.CurrentRoom.RoomNumber.ToString(), new Vector2(0, 0), Color.White);
 
             Room[] roomArray = Cave.Rooms;
             for (int y = 0; y < Cave.numRows; y++)

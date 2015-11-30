@@ -10,14 +10,8 @@ namespace Wumpus
     class UpdateStates
     {
 		private static string[] TriviaQuestions = new string[5];
-		private static bool IsInHelicopterRoom = false;
-		private static int TimeInHelicopterRoom = 0;
-
-		private static bool IsInOsamaRoom = false;
-		private static int TimeInOsamaRoom = 0;
 
 		private static int TriviaWinCounter = 0;
-		private static int TriviaQuestionCounter = 0;
 
         public static void UpdateCave(GameTime gameTime) 
         {
@@ -154,48 +148,48 @@ namespace Wumpus
             {
                 if (TriviaQuestions[5] == "1")
                 {
-                    GameControl.TriviaCorrect();
+                    //GameControl.TriviaCorrect();
                     TriviaWinCounter++;
                 }
                 else
                 {
-                    GameControl.TriviaIncorrect();
+                    //GameControl.TriviaIncorrect();
                 }
             }
             if (WumpusGame.KeyboardState.IsKeyDown(Keys.B))
             {
                 if (TriviaQuestions[5] == "2")
                 {
-                    GameControl.TriviaCorrect();
+                    //GameControl.TriviaCorrect();
                     TriviaWinCounter++;
                 }
                 else
                 {
-                    GameControl.TriviaIncorrect();
+                    //GameControl.TriviaIncorrect();
                 }
             }
             if (WumpusGame.KeyboardState.IsKeyDown(Keys.C))
             {
                 if (TriviaQuestions[5] == "3")
                 {
-                    GameControl.TriviaCorrect();
+                   // GameControl.TriviaCorrect();
                     TriviaWinCounter++;
                 }
                 else
                 {
-                    GameControl.TriviaIncorrect();
+                    //GameControl.TriviaIncorrect();
                 }
             }
             if (WumpusGame.KeyboardState.IsKeyDown(Keys.D))
             {
                 if (TriviaQuestions[5] == "4")
                 {
-                    GameControl.TriviaCorrect();
+                    //GameControl.TriviaCorrect();
                     TriviaWinCounter++;
                 }
                 else
                 {
-                    GameControl.TriviaIncorrect();
+                    //GameControl.TriviaIncorrect();
                 }
             }
 			//If the question has been answered

@@ -15,8 +15,6 @@ namespace Wumpus
 
 		Random random = new Random();
 
-		int rightAnswer;
-
 		public TriviaList()
 		{
 			//read info from file

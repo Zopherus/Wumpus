@@ -75,7 +75,6 @@
   <ItemGroup>
     <Compile Include="Cave.cs" />
     <Compile Include="DrawStates.cs" />
-    <Compile Include="GameControl.cs" />
     <Compile Include="Helicopter.cs" />
     <Compile Include="Highscore.cs" />
     <Compile Include="Map.cs" />

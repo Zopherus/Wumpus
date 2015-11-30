@@ -16,7 +16,7 @@ namespace Wumpus
 	/// </summary>
 	///
     public enum GameState { Cave, Help, Highscore, Lose, Map, Menu, Shop, Trivia, TriviaLose, TriviaWin };
-    public enum Direction { Up, Right, Down, Left };
+    public enum Direction { Down, Left, Right, Up };
 	public enum TriviaState { NotAnswered, Correct, Incorrect };
 
 	public class WumpusGame : Game
@@ -31,8 +31,6 @@ namespace Wumpus
 		//Only used when in the Trivia GameState
 		public static TriviaState TriviaState;
 
-        public static Texture2D 
-            Texture { get; private set;  }
         public static Texture2D BlackTexture { get; private set;  }
         public static Texture2D WhiteTexture { get; private set;  }
         public static Texture2D MoneyCurrencyTexture { get; private set;  }
@@ -90,8 +88,8 @@ namespace Wumpus
 			// TODO: Add your initialization logic here
 
             Cave.InitializeMap();
-            Player.CurrentRoom = Cave.Rooms[0];
-            GameControl.Initialize();
+            GameState = GameState.Menu;
+            Player = new Player(new Rectangle(375, 180, Player.rectangleSize, Player.rectangleSize), 3, 0);
 			base.Initialize();
 		}
 

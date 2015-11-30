@@ -18,227 +18,149 @@ namespace Wumpus
         public const int SpriteSheetWidth = 32;
 		public const int rectangleSize = 50;
         public const int Speed = 5;
-        private int turns, gold, arrows, counter, counterHolder;
-        private Room currentRoom;
-		private Rectangle position;
+        public int Turns { get; private set; }
+        public int Gold { get; private set; }
+        public int Arrows { get; private set; }
+        private int characterFrameCounter;
+        public Room CurrentRoom { get; private set; }
+        public Rectangle Position { get; private set; }
         public Direction Direction { get; private set; }
 
 		//constructors
-        public Player(Rectangle rectangle, int arrows, int gold)
+        public Player(Rectangle Position, int Arrows, int Gold)
         {
-            this.position = rectangle;
-            this.arrows = arrows;
-            this.gold = gold;
+            this.Position = Position;
+            this.Arrows = Arrows;
+            this.Gold = Gold;
+            CurrentRoom = Cave.Rooms[0];
         }
 
 		public Player(Rectangle rectangle)
 		{
-			this.position = rectangle;
+			this.Position = rectangle;
+            CurrentRoom = Cave.Rooms[0];
 		}
 
-		public Player(){}
-
-		public int Gold
-		{
-			get { return gold; }
-		}
-
-        public int Arrows
+		public Player()
         {
-            get { return arrows; }
-            set { arrows = value; }
+            CurrentRoom = Cave.Rooms[0];
         }
 
-        public Room CurrentRoom
-        {
-            get { return currentRoom; }
-            set { currentRoom = value; }
+        //Stored internally as a number from 0 - 29, DrawStates only uses the tens digit
+        public int CharacterFrameCounter
+        { 
+            get { return characterFrameCounter / 10; } 
+            private set { characterFrameCounter = value; } 
         }
 
-		//when tries to set the position
-		//doesn't change position if CheckOffScreen is false
-		//Stops from going offscreen
-		public Rectangle Position
-		{
-			get { return position; }
-		}
 
-		public int CounterHolder
+		public void addGold(int amount)
 		{
-			get { return counterHolder; }
-		}
-		// should be mod 4
-
-		//counts the characters motion/frames
-		public int Counter
-		{
-			get { return counter; }
-			set 
-			{ 
-				counter = value % 30;
-				//every 10 frames the character will change
-				counterHolder = (int)Math.Truncate(counter / 10.0);
-			}
-		}
-		
-
-		public void addArrows()
-		{
-			this.arrows++;
-		}
-
-		public void useArrow()
-		{
-			this.arrows--;
-		}
-
-		public void addGold(int n)
-		{
-			this.gold += n;
-		}
-
-		public void subtractGold(int n)
-		{
-			this.gold = (this.gold - n > 0)? (this.gold - n) : 0;
+            Gold += amount;
 		}
 
 		public int calculateScore()
 		{
-			return 100 - this.turns + this.gold + (this.arrows * 10);
+			return 100 - Turns + Gold + 10 * Arrows;
 		}
 
 		//checks if position is within hexagon
 		private bool CheckOnScreen(Rectangle position)
 		{
-            if (currentRoom.ConnectedRooms[0] && position.Y < 75)
+            if (CurrentRoom.ConnectedRooms[0] && position.Y < 70)
             {
+                ChangeRoom(0);
                 return false;
             }
-            else if (currentRoom.ConnectedRooms[1] && (Position.Y < 2 * Position.X - 790))
+            else if (CurrentRoom.ConnectedRooms[1] && (position.Y < 2 * position.X - 790))
             {
+                ChangeRoom(1);
                 return false;
             }
-            else if (currentRoom.ConnectedRooms[2] && (Position.Y > -1.5 * Position.X + 925))
+            else if (CurrentRoom.ConnectedRooms[2] && (position.Y > -1.5 * position.X + 925))
             {
+                ChangeRoom(2);
                 return false;
             }
-            else if (currentRoom.ConnectedRooms[3] && position.Y > 285)
+            else if (CurrentRoom.ConnectedRooms[3] && position.Y > 280)
             {
+                ChangeRoom(3);
                 return false;
             }
-            else if (currentRoom.ConnectedRooms[4] && (Position.Y > 1.5 * Position.X - 190))
+            else if (CurrentRoom.ConnectedRooms[4] && (position.Y > 1.5 * position.X - 190))
             {
+                ChangeRoom(4);
                 return false;
             }
-            else if (currentRoom.ConnectedRooms[5] && (Position.Y < -2 * Position.X + 750))
+            else if (CurrentRoom.ConnectedRooms[5] && (position.Y < -2 * position.X + 750))
             {
+                ChangeRoom(5);
                 return false;
             }
-            else 
-                return Math.Pow(position.X - 375, 2) + Math.Pow(position.Y - 180, 2) > 12100;
+            else
+                return Math.Pow(position.X - 375, 2) + Math.Pow(position.Y - 180, 2) < 14400;
 		}
 
-        public void checkRoomChange()
+        private void ChangeRoom(int adjRoom)
         {
-            if (currentRoom.ConnectedRooms[0] && position.Y < 20)
-            {
-                gold++;
-                turns++;
-                currentRoom = currentRoom.AdjRooms[0];
-                resetPosition();
-            }
-            if (currentRoom.ConnectedRooms[3] && position.Y > 340)
-            {
-                gold++;
-                turns++;
-                currentRoom = currentRoom.AdjRooms[3];
-                resetPosition();
-            }
-            if (currentRoom.ConnectedRooms[1] && (Position.Y < 2 * Position.X - 900))
-            {
-                gold++;
-                turns++;
-                currentRoom = currentRoom.AdjRooms[1];
-                resetPosition();
-            }
-            if (currentRoom.ConnectedRooms[2] && (Position.Y > -1.5 * Position.X + 1000))
-            {
-                gold++;
-                turns++;
-                currentRoom = currentRoom.AdjRooms[2];
-                resetPosition();
-            }
-            if (currentRoom.ConnectedRooms[5] && (Position.Y < -2 * Position.X + 600))
-            {
-                gold++;
-                turns++;
-                currentRoom = currentRoom.AdjRooms[5];
-                resetPosition();
-            }
-            if (currentRoom.ConnectedRooms[4] && (Position.Y > 1.5 * Position.X - 50))
-            {
-                gold++;
-                turns++;
-                currentRoom = currentRoom.AdjRooms[4];
-                resetPosition();
-            }
+            Gold++;
+            Turns++;
+            CurrentRoom = CurrentRoom.AdjRooms[adjRoom];
+            resetPosition();
         }
 
         public void MoveUp()
         {
-            Rectangle newPosition = new Rectangle(position.X, position.Y - Speed, position.Width, position.Height);
+            Rectangle newPosition = new Rectangle(Position.X, Position.Y - Speed, Position.Width, Position.Height);
             if (CheckOnScreen(newPosition))
             {
-                position = newPosition;
+                Position = newPosition;
                 Direction = Direction.Up;
-                counter++;
+                IncreaseCharacterFrameCounter();
             }
-            else
-                checkRoomChange();
         }
 
         public void MoveRight()
         {
-            Rectangle newPosition = new Rectangle(position.X + Speed, position.Y, position.Width, position.Height);
+            Rectangle newPosition = new Rectangle(Position.X + Speed, Position.Y, Position.Width, Position.Height);
             if (CheckOnScreen(newPosition))
             {
-                position = newPosition;
+                Position = newPosition;
                 Direction = Direction.Right;
-                counter++;
+                IncreaseCharacterFrameCounter();
             }
-            else
-                checkRoomChange();
         }
 
         public void MoveDown()
         {
-            Rectangle newPosition = new Rectangle(position.X, position.Y + Speed, position.Width, position.Height);
+            Rectangle newPosition = new Rectangle(Position.X, Position.Y + Speed, Position.Width, Position.Height);
             if (CheckOnScreen(newPosition))
             {
-                position = newPosition;
+                Position = newPosition;
                 Direction = Direction.Down;
-                counter++;
+                IncreaseCharacterFrameCounter();
             }
-            else
-                checkRoomChange();
         }
 
         public void MoveLeft()
         {
-            Rectangle newPosition = new Rectangle(position.X - Speed, position.Y, position.Width, position.Height);
+            Rectangle newPosition = new Rectangle(Position.X - Speed, Position.Y, Position.Width, Position.Height);
             if (CheckOnScreen(newPosition))
             {
-                position = newPosition;
+                Position = newPosition;
                 Direction = Direction.Left;
-                counter++;
+                IncreaseCharacterFrameCounter();
             }
-            else
-                checkRoomChange();
+        }
+
+        private void IncreaseCharacterFrameCounter()
+        {
+            characterFrameCounter = (characterFrameCounter + 1) % 30;
         }
 
         private void resetPosition()
         {
-            position = new Rectangle(375, 200, rectangleSize, rectangleSize);
+            Position = new Rectangle(375, 180, rectangleSize, rectangleSize);
         }
 	}
 }

@@ -15,8 +15,6 @@ namespace Wumpus
 		private int oil1;
 		private int oil2;
 
-		private int NextRoomIndex = 6;
-
 		private string warnings;
 
 		// Variables for assinging random room and for showing hazards.
