@@ -73,7 +73,9 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cave.cs" />
+    <Compile Include="Cave.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="DrawStates.cs" />
     <Compile Include="Helicopter.cs" />
     <Compile Include="Highscore.cs" />

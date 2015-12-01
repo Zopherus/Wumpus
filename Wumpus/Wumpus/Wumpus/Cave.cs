@@ -15,27 +15,27 @@ namespace Wumpus
         public static Room[] Rooms = new Room[30];
         private static Random random = new Random();
 
-        //Given the position of a room, these are the changes in position for the rooms adjacent to the room
-        //Different values are needed if in even or odd column
-        //First array is for even columns, second array for odd columns
-        //Within each array, starts at room above and moves clockwise
+        // Given the position of a room, these are the changes in position for the rooms adjacent to the room
+        // Different values are needed if in even or odd column
+        // First array is for even columns, second array for odd columns
+        // Within each array, starts at room above and moves clockwise
         private static Point[,] directions = {{ new Point(0, -1), new Point(1, -1), new Point(1, 0),
-                                            new Point(0, 1), new Point(-1, 0), new Point(-1, -1)},
+                                            new Point(0, 1), new Point(-1, 0), new Point(-1, -1) },
                                             {new Point(0, -1), new Point(1, 0), new Point(1, -1),
-                                            new Point(0, 1), new Point(-1, 1), new Point(-1, 0)}};
+                                            new Point(0, 1), new Point(-1, 1), new Point(-1, 0)} };
 
         public static void InitializeMap()
         {
             do
             {
-                //Initialize the room objects with numbers and positions
+                // Initialize the room objects with numbers and positions
                 for (int counter = 0; counter < Rooms.Length; counter++)
                 {
                     Point position = new Point(counter % numColumns, counter % numRows);
                     Room room = new Room(counter, position);
                     Rooms[counter] = room;
                 }
-                //Initialize the adjacent and connected rooms
+                // Initialize the adjacent and connected rooms
                 for (int counter = 0; counter < Rooms.Length; counter++)
                 {
                     InitializeAdjacentRooms(Rooms[counter]);
@@ -157,7 +157,6 @@ namespace Wumpus
             }
             return true;
         }
-
 
         public static void FloodFill(bool[] VisitedRooms, Room room)
         {
