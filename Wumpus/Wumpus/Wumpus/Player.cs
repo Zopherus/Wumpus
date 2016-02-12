@@ -49,15 +49,14 @@ namespace Wumpus
         //Stored internally as a number from 0 - 39, DrawStates only uses the tens digit
         //Make 3 map to 1, BushTexture goes back to center column after the right column
         public int CharacterFrameCounter
-        { 
-            get 
+        {
+            get
             {
                 int result = characterFrameCounter / 10;
                 if (result == 3)
                     result = 1;
                 return result;
-            } 
-            private set { characterFrameCounter = value; } 
+            }
         }
 
 
@@ -123,7 +122,7 @@ namespace Wumpus
             {
                 Position = newPosition;
                 Direction = Direction.Up;
-                IncreaseCharacterFrameCounter();
+                IncreaseFrameCounter();
             }
         }
 
@@ -134,7 +133,7 @@ namespace Wumpus
             {
                 Position = newPosition;
                 Direction = Direction.Right;
-                IncreaseCharacterFrameCounter();
+                IncreaseFrameCounter();
             }
         }
 
@@ -145,7 +144,7 @@ namespace Wumpus
             {
                 Position = newPosition;
                 Direction = Direction.Down;
-                IncreaseCharacterFrameCounter();
+                IncreaseFrameCounter();
             }
         }
 
@@ -156,11 +155,11 @@ namespace Wumpus
             {
                 Position = newPosition;
                 Direction = Direction.Left;
-                IncreaseCharacterFrameCounter();
+                IncreaseFrameCounter();
             }
         }
 
-        private void IncreaseCharacterFrameCounter()
+        private void IncreaseFrameCounter()
         {
             characterFrameCounter = (characterFrameCounter + 1) % 40;
         }

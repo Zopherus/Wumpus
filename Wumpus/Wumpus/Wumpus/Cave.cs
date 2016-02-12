@@ -145,18 +145,14 @@ namespace Wumpus
             }
         }
 
-        public static bool CheckMap()
-        {
-            //True if that room has been visited, false otherwise
-            bool[] VisitedRooms = new bool[Rooms.Length];
-            FloodFill(VisitedRooms, Rooms[0]);
-            foreach (bool value in VisitedRooms)
-            {
-                if (!value)
-                    return false;
-            }
-            return true;
-        }
+		public static bool CheckMap()
+		{
+			//True if that room has been visited, false otherwise
+			bool[] VisitedRooms = new bool[Rooms.Length];
+			FloodFill(VisitedRooms, Rooms[0]);
+			//Returns true of all of VisitedRooms are true aka have been visited
+			return VisitedRooms.All(b => b);
+		}
 
         public static void FloodFill(bool[] VisitedRooms, Room room)
         {

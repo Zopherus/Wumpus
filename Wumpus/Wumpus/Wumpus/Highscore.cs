@@ -15,7 +15,7 @@ namespace Wumpus
 			Score score = new Score(Name, Score);
 			HighscoreList.Add(score);
 
-			HighscoreList.Sort(new scoreComparer());
+			HighscoreList.Sort();
 
 			WriteToFile();
 		}
@@ -31,7 +31,6 @@ namespace Wumpus
 		{
 			try
 			{
-                
 				StreamReader sr = new StreamReader("Content/Text Files/HighScores.txt");
 
 				string input = sr.ReadLine();
@@ -46,6 +45,7 @@ namespace Wumpus
 					input = sr.ReadLine();
 				}
 				sr.Close();
+				HighscoreList.Sort();
 			}
 			catch
 			{
@@ -65,13 +65,6 @@ namespace Wumpus
             }
 
 			sw.Close();
-		}
-	}
-	class scoreComparer : Comparer<Score>
-	{
-		public override int Compare(Score x, Score y)
-		{
-			return y.Points.CompareTo(x.Points);
 		}
 	}
 }

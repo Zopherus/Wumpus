@@ -43,6 +43,7 @@ namespace Wumpus
 
 		public void RandomizeTrivia()
 		{
+			// Uses Fisher-Yates shuffle to randomize the trivia questions
 			int position = TriviaQuestions.Count;
 			while (position > 1)
 			{
@@ -60,7 +61,7 @@ namespace Wumpus
 			Trivia trivia = TriviaQuestions[triviaIndex];
 			
 			//Increase triviaIndex by 1, reset back to 0 if it hits end
-			triviaIndex = (triviaIndex + 1 < TriviaQuestions.Count) ? triviaIndex+1 : 0;
+			triviaIndex = (triviaIndex + 1 < TriviaQuestions.Count) ? triviaIndex + 1 : 0;
 
 			trivia.RandomizeAnswers();
 

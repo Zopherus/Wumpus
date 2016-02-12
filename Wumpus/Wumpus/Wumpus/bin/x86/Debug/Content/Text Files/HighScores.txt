@@ -1,5 +1,8 @@
-Paul,600
+Preston,100
 Marty,500
+Paul,600
 Chase,400
 Nick,300
 Eric,200
+Jake,420
+Ray,100000

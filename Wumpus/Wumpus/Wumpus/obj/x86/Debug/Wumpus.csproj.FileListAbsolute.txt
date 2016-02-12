@@ -128,7 +128,6 @@ C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\obj\x86\Debug\Wumpus
 C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\obj\x86\Debug\Wumpus.csprojResolveAssemblyReference.cache
 C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\obj\x86\Debug\Wumpus.exe
-C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\MapHexagon.xnb
 C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Black.xnb
 C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\MoneyCurrency.xnb
 C:\Users\1012746\Desktop\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Osama.xnb

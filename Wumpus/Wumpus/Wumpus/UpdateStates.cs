@@ -98,7 +98,7 @@ namespace Wumpus
         {
             if (WumpusGame.KeyboardState.IsKeyDown(Keys.Left))
             {
-                WumpusGame.GameState = GameState.Map;
+				WumpusGame.GameState = GameState.Menu;
             }
         }
 
