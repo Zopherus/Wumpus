@@ -61,7 +61,7 @@ namespace Wumpus
 
         public void CheckForHazards()
         {
-            foreach (Room room in WumpusGame.Player.CurrentRoom)
+            /*foreach (Room room in WumpusGame.Player.CurrentRoom)
             {
                 if (room == OsamaRoom)
                     warnings += "Osama is near";
@@ -69,7 +69,7 @@ namespace Wumpus
                     warnings += "You hear the beat of a helicopter";
                 if (room == Oil1 || room == Oil2)
                     warnings += "You smell oil";
-            }
+            }*/
         }
     }
 }

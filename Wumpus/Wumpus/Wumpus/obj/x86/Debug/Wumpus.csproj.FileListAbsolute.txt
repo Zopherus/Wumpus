@@ -169,3 +169,36 @@ C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Conten
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\TopLeftBoundary.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Spritefonts\SmallMotorwerkFont.xnb
 C:\Users\Eric\Desktop\XNA Games\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Spritefonts\MotorwerkFont.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\obj\x86\Debug\Wumpus.csprojResolveAssemblyReference.cache
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\obj\x86\Debug\Wumpus.exe
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\obj\x86\Debug\Wumpus.pdb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Spritefonts\SmallMotorwerkFont.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Spritefonts\MotorwerkFont.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Black.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\MoneyCurrency.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Osama.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Bush.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Wall.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Helicopter.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Ground.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Bullets.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Death.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\DefaultBoundary.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\TopBoundary.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\TopRightBoundary.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\BottomRightBoundary.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\BottomBoundary.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\BottomLeftBoundary.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HexagonTreeBoundaries\TopLeftBoundary.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Red.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\HUD.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\OilSpill.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\ShopBackground.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Map.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\Wallpaper.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Sprites\White.xnb
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Text Files\HighScores.txt
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Content\Text Files\TriviaList.txt
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Wumpus.exe
+C:\Users\Eric\Desktop\GitHub\Wumpus\Wumpus\Wumpus\Wumpus\bin\x86\Debug\Wumpus.pdb

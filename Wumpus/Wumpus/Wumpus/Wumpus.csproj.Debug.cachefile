@@ -1,3 +1,5 @@
+Content\Spritefonts\SmallMotorwerkFont.xnb
+Content\Spritefonts\MotorwerkFont.xnb
 Content\Sprites\Black.xnb
 Content\Sprites\MoneyCurrency.xnb
 Content\Sprites\Osama.xnb
@@ -21,7 +23,5 @@ Content\Sprites\ShopBackground.xnb
 Content\Sprites\Map.xnb
 Content\Sprites\Wallpaper.xnb
 Content\Sprites\White.xnb
-Content\Spritefonts\SmallMotorwerkFont.xnb
-Content\Spritefonts\MotorwerkFont.xnb
 Content\Text Files\HighScores.txt
 Content\Text Files\TriviaList.txt

@@ -51,7 +51,7 @@ namespace Wumpus
             //create an array with ints 0 through how many rooms there are
             int[] roomNumbers = Enumerable.Range(0, Rooms.Length).ToArray();
             
-            //randomize the array
+            //randomize the array using Fisher-Yates shuffle
             int position = roomNumbers.Length;
             while (position > 1)
             {

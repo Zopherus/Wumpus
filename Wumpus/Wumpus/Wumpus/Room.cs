@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace Wumpus
 {
-	public class Room : IEnumerable<Room>
+	public class Room
 	{
         //first index is top room, goes clockwise
 		public Room[] AdjRooms { get; private set; }
