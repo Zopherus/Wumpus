@@ -23,6 +23,7 @@ namespace Wumpus
             WumpusGame.SpriteBatch.Draw(WumpusGame.DefaultRoomBoundary, new Rectangle(0, 0, 800, 450), Color.White);
             WumpusGame.SpriteBatch.Draw(WumpusGame.BushTexture, WumpusGame.Player.Position, new Rectangle(32 * WumpusGame.Player.CharacterFrameCounter, Player.SpriteSheetHeight * (int)WumpusGame.Player.Direction, Player.SpriteSheetWidth, Player.SpriteSheetHeight), Color.White);
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, new Point(WumpusGame.Player.Position.X, WumpusGame.Player.Position.Y).ToString(), new Vector2(0, 0), Color.Black);
+            WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, WumpusGame.Player.CurrentRoom.RoomNumber.ToString(), new Vector2(300, 150), Color.Black);
             //WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, WumpusGame.MouseState.ToString(), new Vector2(0, 0), Color.Black);
             for (int counter = 0; counter < WumpusGame.Player.CurrentRoom.ConnectedRooms.Length; counter++)
             {
@@ -34,14 +35,14 @@ namespace Wumpus
 
             WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, "Map", new Vector2(115 - (WumpusGame.MotorwerkFont.MeasureString("Map")).X / 2, 520 - (WumpusGame.MotorwerkFont.MeasureString("Map")).Y / 2), Color.Black);
 
-            /*if (GameControl.GameMap.Helicopter1 == GameControl.Player.CurrentRoom || GameControl.GameMap.Helicopter2 == GameControl.Player.CurrentRoom)
+            if (Map.Helicopter1 == WumpusGame.Player.CurrentRoom || Map.Helicopter2 == WumpusGame.Player.CurrentRoom)
             {
-				WumpusGame.SpriteBatch.Draw(WumpusGame.HelicopterTexture, GameControl.helicopter.Position, GameControl.helicopter.SourceRectangle, Color.White);
+				WumpusGame.SpriteBatch.Draw(WumpusGame.HelicopterTexture, Helicopter.Position, Helicopter.SourceRectangle, Color.White);
             }
-            if (GameControl.GameMap.OsamaRoom == GameControl.Player.CurrentRoom)
+            if (Map.OsamaRoom == WumpusGame.Player.CurrentRoom)
             {
                 WumpusGame.SpriteBatch.Draw(WumpusGame.OsamaTexture, new Rectangle(375, 200, 50, 50), new Rectangle(0, 0, Player.SpriteSheetWidth, Player.SpriteSheetHeight), Color.White);
-            }*/
+            }
         }
         public static void DrawHelp() 
         {

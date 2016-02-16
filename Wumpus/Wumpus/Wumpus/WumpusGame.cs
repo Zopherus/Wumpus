@@ -88,6 +88,7 @@ namespace Wumpus
 			// TODO: Add your initialization logic here
 
             Cave.InitializeMap();
+            Map.InitializeMap();
             GameState = GameState.Menu;
             Player = new Player(new Rectangle(375, 180, Player.rectangleSize, Player.rectangleSize), 3, 0);
 			base.Initialize();

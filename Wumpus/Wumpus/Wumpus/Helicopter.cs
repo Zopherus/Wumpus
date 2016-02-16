@@ -12,35 +12,24 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Wumpus
 {
-    class Helicopter
+    static class Helicopter
     {
-        private Rectangle position;
-        private int counter;
+        private static Rectangle position  = new Rectangle(310, 120, 200, 200);
+        public static int Counter { get; private set; }
 
-        public Helicopter() { }
-
-        public Helicopter(Rectangle position)
+        public static Rectangle SourceRectangle
         {
-            this.position = position;
-        }
-
-        public Rectangle SourceRectangle
-        {
-            get { return new Rectangle(140 * ((int)(counter/3)%3), 0, 140, 165); }
-        } 
-
-        public Rectangle Position
-        {
-            get 
+            get
             { 
-                counter++;
-                return position;
+                // The SourceRectangle will be called every frame where relevant
+                Counter++;
+                return new Rectangle(140 * ((int)(Counter/3)%3), 0, 140, 165); 
             }
         }
 
-        public int Counter
+        public static Rectangle Position
         {
-            get { return counter; }
+            get { return position; }
         }
     }
 }

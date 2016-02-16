@@ -6,39 +6,36 @@ using System.Threading.Tasks;
 
 namespace Wumpus
 {
-    public class Map
+    public static class Map
     {
         //The room in which each of these is contained
-        public Room OsamaRoom { get; private set; }
-        public Room Helicopter1 { get; private set; }
-        public Room Helicopter2 { get; private set; }
-        public Room Oil1 { get; private set; }
-        public Room Oil2 { get; private set; }
+        public static Room OsamaRoom { get; private set; }
+        public static Room Helicopter1 { get; private set; }
+        public static Room Helicopter2 { get; private set; }
+        public static Room Oil1 { get; private set; }
+        public static Room Oil2 { get; private set; }
 
-        public Room[] Hazards = new Room[5];
+        public static Room[] Hazards { get; private set; }
 
-        private string warnings;
-
-        Random random = new Random();
-        bool[] NearHazard = new bool[3];
-
-        public Map()
-        {
-            Hazards = new Room[]{OsamaRoom, Helicopter1, Helicopter2, Oil1, Oil2};
-            Shuffle();
-        }
-
-
-        public string Warnings
-        {
-            get
+        public static string Warnings 
+        { 
+            get 
             {
                 CheckForHazards();
-                return warnings;
+                return Warnings; 
             }
         }
 
-        public void Shuffle()
+        private static Random random = new Random();
+
+        public static void InitializeMap()
+        {
+            Hazards = new Room[]{OsamaRoom, Helicopter1, Helicopter2, Oil1, Oil2};
+            ShuffleHazards();
+        }
+
+
+        private static void ShuffleHazards()
         {
             Room[] hazardRooms = new Room[5];
             int counter = 0;
@@ -59,7 +56,7 @@ namespace Wumpus
             Oil2 = hazardRooms[4];
         }
 
-        public void CheckForHazards()
+        private static void CheckForHazards()
         {
             /*foreach (Room room in WumpusGame.Player.CurrentRoom)
             {

@@ -8,6 +8,10 @@ using Microsoft.Xna.Framework;
 
 namespace Wumpus
 {
+    // Most of the ideas for this class came from
+    // http://www.redblobgames.com/grids/hexagons/
+    // Diagrams to help visualize some of the code
+    // http://imgur.com/xqIFye9
     class Cave
     {
         public const int numRows = 5;
@@ -19,9 +23,10 @@ namespace Wumpus
         // Different values are needed if in even or odd column
         // First array is for even columns, second array for odd columns
         // Within each array, starts at room above and moves clockwise
-        private static Point[,] directions = {{ new Point(0, -1), new Point(1, -1), new Point(1, 0),
+        private static Point[,] directions = { { new Point(0, -1), new Point(1, -1), new Point(1, 0),
                                             new Point(0, 1), new Point(-1, 0), new Point(-1, -1) },
-                                            {new Point(0, -1), new Point(1, 0), new Point(1, -1),
+
+                                            {new Point(0, -1), new Point(1, 0), new Point(1, 1),
                                             new Point(0, 1), new Point(-1, 1), new Point(-1, 0)} };
 
         public static void InitializeMap()
@@ -31,6 +36,7 @@ namespace Wumpus
                 // Initialize the room objects with numbers and positions
                 for (int counter = 0; counter < Rooms.Length; counter++)
                 {
+                    // Use Point to describe the offset coordinates from the top left
                     Point position = new Point(counter % numColumns, counter % numRows);
                     Room room = new Room(counter, position);
                     Rooms[counter] = room;
@@ -48,22 +54,23 @@ namespace Wumpus
 
         private static void RandomizeRoomNumbers()
         {
-            //create an array with ints 0 through how many rooms there are
+            // Create an array with ints 0 through how many rooms there are
             int[] roomNumbers = Enumerable.Range(0, Rooms.Length).ToArray();
             
             //randomize the array using Fisher-Yates shuffle
             int position = roomNumbers.Length;
             while (position > 1)
             {
-                //creates a random int from 0 to position, not including position to swap to
-                //decreases position by 1
+                // Creates a random int from 0 to position, not including position to swap to
+                // Decreases position by 1
                 int swapPosition = random.Next(position--);
+                // Swaps the number in the random position and the current position
                 int temp = roomNumbers[position];
                 roomNumbers[position] = roomNumbers[swapPosition];
                 roomNumbers[swapPosition] = temp;
             }
 
-            //set the room numbers of the room equal to the randomized array
+            // Set the room numbers of the room equal to the randomized array
             for (int counter = 0; counter < Rooms.Length; counter++)
             {
                 Rooms[counter].RoomNumber = roomNumbers[counter];
@@ -72,8 +79,9 @@ namespace Wumpus
 
         private static void InitializeAdjacentRooms(Room room)
         {
-            //even or odd column
+            // Even or odd column
             int columnParity = room.Position.X % 2;
+            // Starts with the room above and moves clockwise
             for (int counter = 0; counter < room.AdjRooms.Length; counter++)
             {
                 room.AdjRooms[counter] = FindRoom(new Point(room.Position.X + directions[columnParity, counter].X,
@@ -102,11 +110,11 @@ namespace Wumpus
             int numberConnectedRooms = room.ConnectedRooms.Count(c => c);
 
             int minToAdd = 0;
-            //If the room already has a connected path, don't need to add anymore
+            // If the room already has a connected path, don't need to add anymore
             if (numberConnectedRooms == 0)
                 minToAdd = 1;
 
-            //Since random.Next is exclusive for upper bound, the max number of paths is 3
+            // Since random.Next is exclusive for upper bound, the max number of paths is 3
             int maxToAdd = 4;
             foreach (Room AdjRoom in room.AdjRooms)
             {
@@ -145,7 +153,7 @@ namespace Wumpus
             }
         }
 
-		public static bool CheckMap()
+		private static bool CheckMap()
 		{
 			//True if that room has been visited, false otherwise
 			bool[] VisitedRooms = new bool[Rooms.Length];
@@ -154,7 +162,7 @@ namespace Wumpus
 			return VisitedRooms.All(b => b);
 		}
 
-        public static void FloodFill(bool[] VisitedRooms, Room room)
+        private static void FloodFill(bool[] VisitedRooms, Room room)
         {
             VisitedRooms[room.RoomNumber] = true;
             for (int counter = 0; counter < room.ConnectedRooms.Length; counter++)
