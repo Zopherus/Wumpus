@@ -70,6 +70,12 @@ namespace Wumpus
 			return 100 - Turns + Gold + 10 * Arrows;
 		}
 
+        public void HelicopterCarryOff()
+        {
+            Random random = new Random();
+            CurrentRoom = Cave.Rooms[random.Next(Cave.Rooms.Length)];
+        }
+
 		//checks if position is within hexagon
 		private bool CheckOnScreen(Rectangle position)
 		{

@@ -13,6 +13,7 @@ namespace Wumpus
 		public string Answer2 { get; private set; }
 		public string Answer3 { get; private set; }
 		public string Answer4 { get; private set; }
+        // number from 1 to 4 showing which answer is correct
 		public int CorrectAnswer { get; private set; }
 
 		public Trivia() { }
@@ -31,17 +32,19 @@ namespace Wumpus
 		{
 			Random random = new Random();
 			string[] answers = { Answer1, Answer2, Answer3, Answer4 };
+            string correctAnswer = answers[CorrectAnswer - 1];
+            // Use Fisher-Yates shuffle to randomize trivia
 			int position = answers.Length;
 			while (position > 1)
 			{
-				//creates a random int from 0 to position, not including position to swap to
-				//decreases position by 1
+				// Creates a random int from 0 to position, not including position to swap to
+				// Decreases position by 1
 				int swapPosition = random.Next(position--);
 				string temp = answers[position];
 				answers[position] = answers[swapPosition];
 				answers[swapPosition] = temp;
 			}
-			//reset the answers to the randomized answers
+			// Reset the answers to the randomized answers
 			Answer1 = answers[0];
 			Answer2 = answers[1];
 			Answer3 = answers[2];

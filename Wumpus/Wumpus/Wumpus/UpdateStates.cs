@@ -10,8 +10,12 @@ namespace Wumpus
     class UpdateStates
     {
 		private static string[] TriviaQuestions = new string[5];
+        private static int TriviaWinCounter = 0;
 
-		private static int TriviaWinCounter = 0;
+        private static bool EnteredHelicopterRoom = false;
+        private static Timer HelicopterTimer;
+        private static bool EnteredOsamaRoom = false;
+        private static Timer OsamaTimer;
 
         public static void UpdateCave(GameTime gameTime) 
         {
@@ -41,31 +45,41 @@ namespace Wumpus
             {
                 WumpusGame.Player.MoveDown();
             }
-			/*if (GameControl.GameMap.Helicopter1 == GameControl.Player.CurrentRoom || GameControl.GameMap.Helicopter2 == GameControl.Player.CurrentRoom)
+
+			if (Map.Helicopter1 == WumpusGame.Player.CurrentRoom || Map.Helicopter2 == WumpusGame.Player.CurrentRoom)
 			{
 				//When first enter helicopter room
-				if (!IsInHelicopterRoom)
+				if (!EnteredHelicopterRoom)
 				{
-					IsInHelicopterRoom = true;
-					int time = (int)gameTime.TotalGameTime.Seconds;
+					EnteredHelicopterRoom = true;
+                    // 3000 milliseconds == 3 seconds
+                    HelicopterTimer = new Timer(3000);
 				}
 
-				if (gameTime.TotalGameTime.Seconds - TimeInHelicopterRoom > 3)
-				{
-					GameControl.Player.CurrentRoom = GameControl.GameMap.BatCarryOff();
-					TimeInHelicopterRoom = 0;
-					IsInHelicopterRoom = false;
-				}
+                HelicopterTimer.tick(gameTime);
+                if (HelicopterTimer.TimeMilliseconds > HelicopterTimer.Interval)
+                {
+                    WumpusGame.Player.HelicopterCarryOff();
+                    HelicopterTimer.reset();
+                    EnteredHelicopterRoom = false;
+                }
 			}
-			if (GameControl.GameMap.OsamaRoom == GameControl.Player.CurrentRoom)
+            else
+            {
+                EnteredHelicopterRoom = false;
+            }
+
+			if (Map.OsamaRoom == WumpusGame.Player.CurrentRoom)
 			{
-				if (!IsInOsamaRoom)
+				if (!EnteredOsamaRoom)
 				{
-					IsInOsamaRoom = true;
-					TimeInOsamaRoom = (int)gameTime.TotalGameTime.Seconds;
+					EnteredOsamaRoom = true;
+                    // 3000 milliseconds == 3 seconds
+                    OsamaTimer = new Timer(3000);
 					TriviaWinCounter = 0;
 				}
-				if (gameTime.TotalGameTime.Seconds - TimeInOsamaRoom > 3)
+                OsamaTimer.tick(gameTime);
+				if (OsamaTimer.TimeMilliseconds > OsamaTimer.Interval)
 				{
 					if (TriviaQuestionCounter < 5 && TriviaWinCounter < 3 && TriviaQuestionCounter - TriviaWinCounter < 3)
 					{
@@ -75,15 +89,15 @@ namespace Wumpus
 					}
 					else if (TriviaWinCounter >= 3)
 					{
-						GameControl.Player.CurrentRoom = GameControl.GameMap.BatCarryOff();
-						IsInOsamaRoom = false;
+						WumpusGame.Player.HelicopterCarryOff();
+						EnteredOsamaRoom = false;
 					}
 					else if (TriviaQuestionCounter - TriviaWinCounter >= 3)
 					{
 						WumpusGame.GameState = GameState.Lose;
 					}
 				}
-			}*/
+			}
         }
 
         public static void UpdateHelp() 

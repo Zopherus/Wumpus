@@ -34,7 +34,6 @@ namespace Wumpus
             ShuffleHazards();
         }
 
-
         private static void ShuffleHazards()
         {
             Room[] hazardRooms = new Room[5];
