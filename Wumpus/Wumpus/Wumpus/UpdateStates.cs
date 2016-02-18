@@ -9,13 +9,15 @@ namespace Wumpus
 {
     class UpdateStates
     {
-		private static string[] TriviaQuestions = new string[5];
+        public static Trivia CurrentTrivia { get; private set; }
         private static int TriviaWinCounter = 0;
 
         private static bool EnteredHelicopterRoom = false;
         private static Timer HelicopterTimer;
         private static bool EnteredOsamaRoom = false;
         private static Timer OsamaTimer;
+
+        private static bool EnteredTrivia = false;
 
         public static void UpdateCave(GameTime gameTime) 
         {
@@ -81,7 +83,7 @@ namespace Wumpus
                 OsamaTimer.tick(gameTime);
 				if (OsamaTimer.TimeMilliseconds > OsamaTimer.Interval)
 				{
-					if (TriviaQuestionCounter < 5 && TriviaWinCounter < 3 && TriviaQuestionCounter - TriviaWinCounter < 3)
+					/*if (TriviaQuestionCounter < 5 && TriviaWinCounter < 3 && TriviaQuestionCounter - TriviaWinCounter < 3)
 					{
 						WumpusGame.TriviaQuestions = GameControl.newTrivia();
 						WumpusGame.GameState = GameState.Trivia;
@@ -95,7 +97,7 @@ namespace Wumpus
 					else if (TriviaQuestionCounter - TriviaWinCounter >= 3)
 					{
 						WumpusGame.GameState = GameState.Lose;
-					}
+					}*/
 				}
 			}
         }
@@ -145,7 +147,7 @@ namespace Wumpus
                 }
                 else if (Menu.HelpRectangle.Contains(mousePoint))
                 {
-                    WumpusGame.GameState = GameState.Help;
+                    WumpusGame.GameState = GameState.Trivia;
                 }
                 else if (Menu.ExitRectangle.Contains(mousePoint))
                 { 
@@ -158,51 +160,62 @@ namespace Wumpus
 
         public static void UpdateTrivia() 
         {
+            if (!EnteredTrivia)
+            {
+                CurrentTrivia = TriviaList.GetTrivia();
+                EnteredTrivia = true;
+            }
             if (WumpusGame.KeyboardState.IsKeyDown(Keys.A))
             {
-                if (TriviaQuestions[5] == "1")
+                if (CurrentTrivia.CorrectAnswer == 1)
                 {
-                    //GameControl.TriviaCorrect();
+                    EnteredTrivia = false;
                     TriviaWinCounter++;
                 }
                 else
                 {
-                    //GameControl.TriviaIncorrect();
+                    EnteredTrivia = false;
                 }
             }
             if (WumpusGame.KeyboardState.IsKeyDown(Keys.B))
             {
-                if (TriviaQuestions[5] == "2")
+                if (CurrentTrivia.CorrectAnswer == 2)
                 {
+                    EnteredTrivia = false;
                     //GameControl.TriviaCorrect();
                     TriviaWinCounter++;
                 }
                 else
                 {
+                    EnteredTrivia = false;
                     //GameControl.TriviaIncorrect();
                 }
             }
             if (WumpusGame.KeyboardState.IsKeyDown(Keys.C))
             {
-                if (TriviaQuestions[5] == "3")
+                if (CurrentTrivia.CorrectAnswer == 3)
                 {
+                    EnteredTrivia = false;
                    // GameControl.TriviaCorrect();
                     TriviaWinCounter++;
                 }
                 else
                 {
+                    EnteredTrivia = false;
                     //GameControl.TriviaIncorrect();
                 }
             }
             if (WumpusGame.KeyboardState.IsKeyDown(Keys.D))
             {
-                if (TriviaQuestions[5] == "4")
+                if (CurrentTrivia.CorrectAnswer == 4)
                 {
+                    EnteredTrivia = false;
                     //GameControl.TriviaCorrect();
                     TriviaWinCounter++;
                 }
                 else
                 {
+                    EnteredTrivia = false;
                     //GameControl.TriviaIncorrect();
                 }
             }

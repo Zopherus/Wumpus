@@ -25,8 +25,6 @@ namespace Wumpus
         public static SpriteBatch SpriteBatch { get; private set; }
         
 		
-		public static string[] TriviaQuestions = new String[5];
-
         public static GameState GameState;
 		//Only used when in the Trivia GameState
 		public static TriviaState TriviaState;
@@ -89,6 +87,7 @@ namespace Wumpus
 
             Cave.InitializeMap();
             Map.InitializeMap();
+            TriviaList.InitializeTriviaList();
             GameState = GameState.Menu;
             Player = new Player(new Rectangle(375, 180, Player.rectangleSize, Player.rectangleSize), 3, 0);
 			base.Initialize();

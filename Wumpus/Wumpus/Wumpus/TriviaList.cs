@@ -6,16 +6,16 @@ using System.IO;
 
 namespace Wumpus
 {
-	class TriviaList
+	static class TriviaList
 	{
-		private List<Trivia> TriviaQuestions = new List<Trivia>();
+		private static List<Trivia> TriviaQuestions = new List<Trivia>();
 		//Index of trivia to next be asked
-		private int triviaIndex = 0;
-		private string[] triviaHintArray = new string[2];
+		private static int triviaIndex = 0;
+		private static string[] triviaHintArray = new string[2];
 
-		Random random = new Random();
+		private static Random random = new Random();
 
-		public TriviaList()
+		public static void InitializeTriviaList()
 		{
 			//read info from file
 			ReadFromFile();
@@ -23,7 +23,7 @@ namespace Wumpus
 			RandomizeTrivia();
 		}
 
-		private void ReadFromFile()
+		private static void ReadFromFile()
 		{
 			StreamReader streamReader = new StreamReader("Content/Text Files/TriviaList.txt");
 
@@ -35,13 +35,22 @@ namespace Wumpus
 				if (line == null)
 					break;
 				string[] data = line.Split(',');
-				Trivia trivia = new Trivia(data[0], data[1], data[2], data[3], data[4], int.Parse(data[5]));
+                string question = data[0];
+                int position = 1;
+                List<string> answers = new List<string>();
+                while (position <= data.Length - 2)
+                {
+                    answers.Add(data[position]);
+                    position++;
+                }
+                int correctAnswer = int.Parse(data[data.Length - 1]);
+				Trivia trivia = new Trivia(data[0], answers.ToArray(), correctAnswer);
 				TriviaQuestions.Add(trivia);
 			}
 			streamReader.Close();
 		}
 
-		public void RandomizeTrivia()
+		public static void RandomizeTrivia()
 		{
 			// Uses Fisher-Yates shuffle to randomize the trivia questions
 			int position = TriviaQuestions.Count;
@@ -56,7 +65,7 @@ namespace Wumpus
 			}
 		}
 
-		public Trivia GetTrivia()
+		public static Trivia GetTrivia()
 		{
 			Trivia trivia = TriviaQuestions[triviaIndex];
 			
@@ -68,7 +77,7 @@ namespace Wumpus
 			return trivia;
 		}
 
-		public string[] GetHint()
+		public static string[] GetHint()
 		{
 			int rndTriv = random.Next(TriviaQuestions.Count);
 
@@ -80,7 +89,7 @@ namespace Wumpus
 			Trivia trivia = TriviaQuestions[rndTriv];
 
 			triviaHintArray[0] = trivia.Question;
-			triviaHintArray[1] = trivia.Answer4;
+			//triviaHintArray[1] = trivia.Answer4;
 
 			return triviaHintArray;
 		}
