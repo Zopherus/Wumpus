@@ -139,10 +139,10 @@ namespace Wumpus
                 string answer3 = "C: " + UpdateStates.CurrentTrivia.Answers[2];
                 string answer4 = "D: " + UpdateStates.CurrentTrivia.Answers[3];
                 WumpusGame.SpriteBatch.DrawString(WumpusGame.SmallMotorwerkFont, question, new Vector2((WumpusGame.ScreenWidth - WumpusGame.SmallMotorwerkFont.MeasureString(question).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.SmallMotorwerkFont.MeasureString(question).Y) / 12), Color.White);
-                WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer1, new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString(answer1).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.MotorwerkFont.MeasureString(answer1).Y) * 4 / 16 + 30), Color.White);
-                WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer2, new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString(answer2).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.MotorwerkFont.MeasureString(answer2).Y) * 6 / 16 + 30), Color.White);
-                WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer3, new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString(answer3).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.MotorwerkFont.MeasureString(answer3).Y) * 8 / 16 + 30), Color.White);
-                WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer4, new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString(answer4).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.MotorwerkFont.MeasureString(answer4).Y) * 10 / 16 + 30), Color.White);
+                WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer1, new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString(answer1).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.MotorwerkFont.MeasureString(answer1).Y) * 2 / 8 + 30), Color.White);
+                WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer2, new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString(answer2).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.MotorwerkFont.MeasureString(answer2).Y) * 3 / 8 + 30), Color.White);
+                WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer3, new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString(answer3).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.MotorwerkFont.MeasureString(answer3).Y) * 4 / 8 + 30), Color.White);
+                WumpusGame.SpriteBatch.DrawString(WumpusGame.MotorwerkFont, answer4, new Vector2((WumpusGame.ScreenWidth - WumpusGame.MotorwerkFont.MeasureString(answer4).X) / 2, (WumpusGame.ScreenHeight - WumpusGame.MotorwerkFont.MeasureString(answer4).Y) * 5 / 8 + 30), Color.White);
             }
             catch {}
 
