@@ -105,8 +105,6 @@ namespace Wumpus
 
         private static void ChooseConnectedRooms(Room room)
         {
-            //OTHER ROOMS CAN ADD PATHWAYS ONTO THIS ROOM TO MAKE THE NUMBER OF PATHS GO OVER 3 CAUSING IN AN ERROR
-            //INFINITE LOOP IF EVERY ROOM AROUND THIS ROOM ALREADY HAS 3 PATHWAYS
             int numberConnectedRooms = room.ConnectedRooms.Count(c => c);
 
             int minToAdd = 0;
